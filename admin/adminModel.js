@@ -19,6 +19,10 @@ const workerModel = new mongoose.Schema({
     type: [String],
     required: [true, "the skill is necessary"],
   },
+  images:{
+    type:[String],
+    required:[true,"the image is needed"]
+  }
 });
 
 const workers = mongoose.model("worker", workerModel);
