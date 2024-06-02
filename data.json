@@ -1,0 +1,23 @@
+[
+    {
+      "name": "bom",
+      "rating": 4.5,
+      "price": 69,
+      "availability": ["1", "2", "3", "4", "5"],
+      "skills": ["swimming", "eating"]
+    },
+    {
+      "name": "som",
+      "rating": 4.5,
+      "price": 69,
+      "availability": ["1"],
+      "skills": ["swimming", "eating"]
+    },
+    {
+      "name": "gom",
+      "rating": 4.5,
+      "price": 69,
+      "availability": ["1"],
+      "skills": ["swimming", "eating", "reading"]
+    }
+  ]
