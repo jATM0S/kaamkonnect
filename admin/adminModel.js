@@ -19,6 +19,10 @@ const workerModel = new mongoose.Schema({
     type: [String],
     required: [true, "the skill is necessary"],
   },
+  skillLevel:{
+    type:String,
+    required:[true,"need skill level"],
+  },
   images:{
     type:[String],
     required:[true,"the image is needed"]
