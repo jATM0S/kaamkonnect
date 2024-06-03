@@ -1,93 +1,122 @@
-
 [
   {
     "name": "bom",
     "rating": 4.5,
     "price": 69,
     "availability": ["1", "2", "3", "4", "5"],
-    "skills": ["swimming", "eating"],
+    "skill": "swimming",
     "skillLevel": "very skilled",
-    "images": ["image1.jpg", "image2.jpg"]
+    "images": ["image1.jpg", "image2.jpg"],
+    "createdAt": "2023-03-15T10:00:00Z",
+    "description": "Expert swimmer and enthusiastic eater.",
+    "experience": "5 years"
   },
   {
     "name": "som",
     "rating": 4.5,
     "price": 69,
     "availability": ["1"],
-    "skills": ["swimming", "eating"],
+    "skill": "swimming",
     "skillLevel": "skilled",
-    "images": ["image3.jpg"]
+    "images": ["image3.jpg"],
+    "createdAt": "2023-05-10T14:30:00Z",
+    "description": "Skilled swimmer and life guard.",
+    "experience": "3 years"
   },
   {
     "name": "gom",
     "rating": 4.5,
     "price": 69,
     "availability": ["1"],
-    "skills": ["swimming", "eating", "reading"],
+    "skill": "reading",
     "skillLevel": "very skilled",
-    "images": ["image4.jpg", "image5.jpg", "image6.jpg"]
+    "images": ["image4.jpg", "image5.jpg", "image6.jpg"],
+    "createdAt": "2023-04-05T11:15:00Z",
+    "description": "reading and research expert.",
+    "experience": "4 years"
   },
   {
     "name": "tom",
     "rating": 4.7,
     "price": 75,
     "availability": ["2", "3", "4"],
-    "skills": ["cooking", "running"],
+    "skill": "cooking",
     "skillLevel": "skilled",
-    "images": ["image7.jpg", "image8.jpg"]
+    "images": ["image7.jpg", "image8.jpg"],
+    "createdAt": "2023-01-10T09:30:00Z",
+    "description": "Passionate cook .",
+    "experience": "6 years"
   },
   {
     "name": "jim",
     "rating": 4.8,
     "price": 80,
     "availability": ["3", "4", "5", "6"],
-    "skills": ["painting", "singing"],
+    "skill": "singing",
     "skillLevel": "basic",
-    "images": ["image9.jpg"]
+    "images": ["image9.jpg"],
+    "createdAt": "2022-12-25T08:45:00Z",
+    "description": "Beginner painter and singer.",
+    "experience": "2 years"
   },
   {
     "name": "kim",
     "rating": 4.3,
     "price": 60,
     "availability": ["1", "2", "6"],
-    "skills": ["dancing", "acting"],
+    "skill": "dancing",
     "skillLevel": "very skilled",
-    "images": ["image10.jpg", "image11.jpg"]
+    "images": ["image10.jpg", "image11.jpg"],
+    "createdAt": "2023-02-20T17:00:00Z",
+    "description": "Highly skilled dancer and actor.",
+    "experience": "7 years"
   },
   {
     "name": "pam",
     "rating": 4.9,
     "price": 90,
     "availability": ["5", "6", "7"],
-    "skills": ["drawing", "writing"],
+    "skill": "drawing",
     "skillLevel": "skilled",
-    "images": ["image12.jpg"]
+    "images": ["image12.jpg"],
+    "createdAt": "2023-08-05T12:30:00Z",
+    "description": "Talented in drawing and writing.",
+    "experience": "4 years"
   },
   {
     "name": "sam",
     "rating": 4.6,
     "price": 70,
     "availability": ["2", "3", "5", "7"],
-    "skills": ["coding", "debugging"],
+    "skill": "coding",
     "skillLevel": "basic",
-    "images": ["image13.jpg", "image14.jpg"]
+    "images": ["image13.jpg", "image14.jpg"],
+    "createdAt": "2022-11-30T15:20:00Z",
+    "description": "Basic skill in coding and debugging.",
+    "experience": "1 year"
   },
   {
     "name": "tim",
     "rating": 4.4,
     "price": 65,
     "availability": ["1", "3", "4", "5"],
-    "skills": ["teaching", "learning"],
+    "skill": "teaching",
     "skillLevel": "very skilled",
-    "images": ["image15.jpg"]
+    "images": ["image15.jpg"],
+    "createdAt": "2023-09-15T14:50:00Z",
+    "description": "Expert in teaching and learning.",
+    "experience": "8 years"
   },
   {
     "name": "joe",
     "rating": 4.2,
     "price": 55,
     "availability": ["4", "5", "6"],
-    "skills": ["driving", "repairing"],
+    "skill": "repairing",
     "skillLevel": "skilled",
-    "images": ["image16.jpg", "image17.jpg"]
+    "images": ["image16.jpg", "image17.jpg"],
+    "createdAt": "2023-06-25T13:45:00Z",
+    "description": "Skilled driver and repairman.",
+    "experience": "6 years"
   }
 ]

@@ -15,18 +15,31 @@ const workerModel = new mongoose.Schema({
   availability: {
     type: [String],
   },
-  skills: {
-    type: [String],
+  skill: {
+    type: String,
     required: [true, "the skill is necessary"],
   },
-  skillLevel:{
-    type:String,
-    required:[true,"need skill level"],
+  description: {
+    type: String,
+    required: [true, "the skill description is necessary"],
   },
-  images:{
-    type:[String],
-    required:[true,"the image is needed"]
-  }
+  experience: {
+    type: String,
+    required: [true, "the experience you have is necessary to put in"],
+  },
+  skillLevel: {
+    type: String,
+    required: [true, "need skill level"],
+  },
+  images: {
+    type: [String],
+    required: [true, "the image is needed"],
+  },
+  createdAt: {
+    type: Date,
+    default: Date.now(),
+    required: [true, "date is necessary"],
+  },
 });
 
 const workers = mongoose.model("worker", workerModel);
