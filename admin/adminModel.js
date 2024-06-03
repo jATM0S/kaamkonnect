@@ -30,6 +30,10 @@ const workerModel = new mongoose.Schema({
   skillLevel: {
     type: String,
     required: [true, "need skill level"],
+    enum: {
+      values: ["skilled", "very skilled", "basic"],
+      message:"skilles can be skilled, very skilled or basic only."
+    },
   },
   images: {
     type: [String],

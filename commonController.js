@@ -13,13 +13,23 @@ exports.getWorkers = async (req, res) => {
     let queryStr = JSON.stringify(queryObj);
     queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`);
 
-    // console.log(JSON.parse(queryStr));
     let query = worker.find(JSON.parse(queryStr));
+
+    // sorting
     if (req.query.sort) {
       const sortBy = req.query.sort.split(",").join(" ");
       query = query.sort(sortBy);
     }
 
+    //pagination
+    const page = req.query.page * 1 || 1;
+    const limit = req.query.limit * 1 || 20;
+    const skip = (page - 1) * limit;
+    query = query.skip(skip).limit(10);
+    if (req.query.page) {
+      const numWorkers = await worker.countDocuments();
+      if (skip >= numWorkers) throw new Error("this page does not exist");
+    }
     // finding the workers
     const findingWorkers = await query;
     res.status(200).json({
