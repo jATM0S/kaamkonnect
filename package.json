@@ -4,7 +4,9 @@
   "description": "job portal",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon server.js",
+    "debug": "ndb server.js",
+    "start:prod": "cross-env NODE_ENV=production nodemon server.js"
   },
   "author": "",
   "license": "ISC",
@@ -13,5 +15,8 @@
     "express": "^4.19.2",
     "mongoose": "^8.4.0",
     "nodemon": "^3.1.2"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3"
   }
 }
