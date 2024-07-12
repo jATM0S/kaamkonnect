@@ -1,6 +1,6 @@
 const express = require("express");
-const controller = require("./adminController");
-const commonControllers = require("./../commonController");
+const controller = require("../controllers/adminController");
+const commonControllers = require("../controllers/commonController");
 const router = express.Router();
 
 router

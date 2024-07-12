@@ -1,8 +1,7 @@
 const express = require("express");
-const worker = require("./adminModel");
-const catchAsync = require("./../utils/catchAsync");
-const AppError = require("./../utils/appError");
-
+const worker = require("../models/adminModel");
+const catchAsync = require("../utils/catchAsync");
+const AppError = require("../utils/appError");
 
 // creating a worker
 exports.createWorker = catchAsync(async (req, res, next) => {
@@ -20,8 +19,8 @@ exports.updateWorker = catchAsync(async (req, res, next) => {
   const updateWorker = await worker.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
   });
-  if (!updateWorker){
-    return next(new AppError('No worker of that ID!!',404))
+  if (!updateWorker) {
+    return next(new AppError("No worker of that ID!!", 404));
   }
   res.status(200).json({
     status: "sucess",
@@ -35,14 +34,14 @@ exports.updateWorker = catchAsync(async (req, res, next) => {
 // delete the worker
 exports.deleteWorker = catchAsync(async (req, res, next) => {
   const updateWorker = await worker.findByIdAndDelete(req.params.id);
-  if (!deleteWorker){
-    return next(new AppError('No worker of that ID!!',404))
+  if (!deleteWorker) {
+    return next(new AppError("No worker of that ID!!", 404));
   }
   res.status(200).json({
     status: "sucess",
     result: "Deleted worker detail",
     data: {
       updateWorker,
-    }, 
+    },
   });
 });

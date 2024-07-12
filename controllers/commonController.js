@@ -1,11 +1,10 @@
 const { json } = require("express");
-const worker = require("./admin/adminModel");
-const catchAsync = require("./utils/catchAsync");
-const AppError = require("./utils/appError");
-
+const worker = require("../models/adminModel");
+const catchAsync = require("../utils/catchAsync");
+const AppError = require("../utils/appError");
 
 // getting all the workers with filtering and sorting and pagination
-exports.getWorkers = catchAsync(async (req, res) => {
+exports.getWorkers = catchAsync(async (req, res,next) => {
   // filtering
   const queryObj = { ...req.query };
   const excludedFields = ["page", "sort", "limit", "fields"];
@@ -44,7 +43,7 @@ exports.getWorkers = catchAsync(async (req, res) => {
 });
 
 // get an worker
-exports.getWorker = catchAsync(async (req, res) => {
+exports.getWorker = catchAsync(async (req, res,next) => {
   const findingAWorker = await worker.findById(req.params.id);
   if (!findingAWorker) {
     return next(new AppError("No worker of that ID!!", 404));

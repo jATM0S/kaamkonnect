@@ -4,7 +4,7 @@ const AppError = require("./utils/appError");
 const globalErrorHandler=require('./utils/errorController')
 app.use(express.json());
 
-const router = require("./admin/routers");
+const router = require("./routers/routers");
 app.use("/admin", router);
 
 app.all("*", (req, res, next) => {
