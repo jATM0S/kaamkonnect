@@ -23,3 +23,5 @@ const userModel = new mongoose.Schema({
     photo: String,
   },
 });
+const users = mongoose.model("users", workerModel);
+module.exports = users;

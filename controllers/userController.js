@@ -1,10 +1,10 @@
 const express = require("express");
-const worker = require("../models/adminModel");
+const worker = require("../models/userModel");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 
 // creating a worker
-exports.createWorker = catchAsync(async (req, res, next) => {
+exports.createUser = catchAsync(async (req, res, next) => {
   const newWorker = await worker.create(req.body);
   res.status(201).json({
     status: "success",
@@ -15,7 +15,7 @@ exports.createWorker = catchAsync(async (req, res, next) => {
 });
 
 // update the workerdetails
-exports.updateWorker = catchAsync(async (req, res, next) => {
+exports.updateUser = catchAsync(async (req, res, next) => {
   const updateWorker = await worker.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
   });

@@ -1,16 +1,16 @@
 const express = require("express");
-const controller = require("../controllers/adminController");
-const commonControllers = require("../controllers/commonController");
+// const controller = require("../controllers/adminController");
+const workerControllers = require("../controllers/workerControllers");
 const router = express.Router();
 
 router
   .route("/:id")
-  .get(commonControllers.getWorker)
-  .patch(controller.updateWorker)
-  .delete(controller.deleteWorker);
+  .get(workerControllers.getWorker)
+  .patch(workerControllers.updateWorker)
+  .delete(workerControllers.deleteWorker);
 router
   .route("/")
-  .get(commonControllers.getWorkers)
-  .post(controller.createWorker);
+  .get(workerControllers.getWorkers)
+  .post(workerControllers.createWorker);
 
 module.exports = router;

@@ -1,10 +1,53 @@
 const { json } = require("express");
-const worker = require("../models/adminModel");
+const worker = require("../models/workerModel");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 
+// creating a worker
+exports.createWorker = catchAsync(async (req, res, next) => {
+  const newWorker = await worker.create(req.body);
+  res.status(201).json({
+    status: "success",
+    data: {
+      worker: newWorker,
+    },
+  });
+});
+
+// update the workerdetails
+exports.updateWorker = catchAsync(async (req, res, next) => {
+  const updateWorker = await worker.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+  });
+  if (!updateWorker) {
+    return next(new AppError("No worker of that ID!!", 404));
+  }
+  res.status(200).json({
+    status: "sucess",
+    result: "updated worker detail",
+    data: {
+      updateWorker,
+    },
+  });
+});
+
+// delete the worker
+exports.deleteWorker = catchAsync(async (req, res, next) => {
+  const updateWorker = await worker.findByIdAndDelete(req.params.id);
+  if (!deleteWorker) {
+    return next(new AppError("No worker of that ID!!", 404));
+  }
+  res.status(200).json({
+    status: "sucess",
+    result: "Deleted worker detail",
+    data: {
+      updateWorker,
+    },
+  });
+});
+
 // getting all the workers with filtering and sorting and pagination
-exports.getWorkers = catchAsync(async (req, res,next) => {
+exports.getWorkers = catchAsync(async (req, res, next) => {
   // filtering
   const queryObj = { ...req.query };
   const excludedFields = ["page", "sort", "limit", "fields"];
@@ -43,7 +86,7 @@ exports.getWorkers = catchAsync(async (req, res,next) => {
 });
 
 // get an worker
-exports.getWorker = catchAsync(async (req, res,next) => {
+exports.getWorker = catchAsync(async (req, res, next) => {
   const findingAWorker = await worker.findById(req.params.id);
   if (!findingAWorker) {
     return next(new AppError("No worker of that ID!!", 404));
