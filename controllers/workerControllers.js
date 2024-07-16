@@ -33,7 +33,7 @@ exports.updateWorker = catchAsync(async (req, res, next) => {
 
 // delete the worker
 exports.deleteWorker = catchAsync(async (req, res, next) => {
-  const updateWorker = await worker.findByIdAndDelete(req.params.id);
+  const deleteWorker = await worker.findByIdAndDelete(req.params.id);
   if (!deleteWorker) {
     return next(new AppError("No worker of that ID!!", 404));
   }
@@ -41,7 +41,7 @@ exports.deleteWorker = catchAsync(async (req, res, next) => {
     status: "sucess",
     result: "Deleted worker detail",
     data: {
-      updateWorker,
+      deleteWorker,
     },
   });
 });
