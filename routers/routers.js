@@ -21,5 +21,8 @@ router
   .route("/users")
   .get(userControllers.getUsers)
   .post(userControllers.createUser);
+router
+  .route("/users/login")
+  .post(userControllers.login);
 
 module.exports = router;

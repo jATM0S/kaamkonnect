@@ -1,18 +1,22 @@
 const jwt = require("jsonwebtoken");
 const express = require("express");
-const user = require("../models/userModel");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
-const users = require("../models/userModel");
+const Users = require("../models/userModel");
 
+const assignToken = (id) => {
+  return jwt.sign({ id }, process.env.JWT_SECRET, {
+    expiresIn: process.env.JWT_EXPIRES_IN,
+  });
+};
 //get a user
 exports.getUser = catchAsync(async (req, res, next) => {
-  const findingAUser = await user.findById(req.params.id);
+  const findingAUser = await Users.findById(req.params.id);
   if (!findingAUserr) {
     return next(new AppError("No user of that ID!!", 404));
   }
   res.status(200).json({
-    status: "sucess",  
+    status: "sucess",
     result: "found",
     data: {
       findingAUser,
@@ -30,7 +34,7 @@ exports.getUsers = catchAsync(async (req, res, next) => {
   let queryStr = JSON.stringify(queryObj);
   queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`);
 
-  let query = users.find(JSON.parse(queryStr));
+  let query = Users.find(JSON.parse(queryStr));
 
   // sorting
   if (req.query.sort) {
@@ -44,7 +48,7 @@ exports.getUsers = catchAsync(async (req, res, next) => {
   const skip = (page - 1) * limit;
   query = query.skip(skip).limit(10);
   if (req.query.page) {
-    const numUsers = await users.countDocuments();
+    const numUsers = await Users.countDocuments();
     if (skip >= numUsers) throw new Error("this page does not exist");
   }
   // finding the workers
@@ -60,15 +64,13 @@ exports.getUsers = catchAsync(async (req, res, next) => {
 
 // creating a user
 exports.createUser = catchAsync(async (req, res, next) => {
-  const newUser = await user.create({
+  const newUser = await Users.create({
     name: req.body.name,
     email: req.body.email,
     password: req.body.password,
     passwordConfirm: req.body.passwordConfirm,
   });
-  const token = jwt.sign({ id: newUser._id }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRES_IN,
-  });
+  const token = assignToken(newUser._id);
   res.status(201).json({
     status: "success",
     token,
@@ -78,15 +80,25 @@ exports.createUser = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.login=(req,res,next)=>{
-  const {email,password}=req.body;
-  if(!email || !password){
-    next(new AppError('please provide email and password',300));
+exports.login = async (req, res, next) => {
+  const { email, password } = req.body;
+  if (!email || !password) {
+    next(new AppError("please provide email and password", 300));
   }
-}
+  const user = await Users.findOne({ email }).select("+password");
+  if (!user || !user.checkPassword(password, user.password)) {
+    return next(new AppError("incorrect email of password"), 491);
+  }
+  const token = assignToken(user._id);
+  res.status(200).json({
+    status: "sucess",
+    token,
+  });
+};
+
 // update the workerdetails
 exports.updateUser = catchAsync(async (req, res, next) => {
-  const updateUser = await user.findByIdAndUpdate(req.params.id, req.body, {
+  const updateUser = await Users.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
   });
   if (!updateUser) {
@@ -103,7 +115,7 @@ exports.updateUser = catchAsync(async (req, res, next) => {
 
 // delete the user
 exports.deleteUser = catchAsync(async (req, res, next) => {
-  const deleteUser = await user.findByIdAndDelete(req.params.id);
+  const deleteUser = await Users.findByIdAndDelete(req.params.id);
   if (!deleteUser) {
     return next(new AppError("No user of that ID!!", 404));
   }
