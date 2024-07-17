@@ -80,21 +80,22 @@ exports.createUser = catchAsync(async (req, res, next) => {
   });
 });
 
-exports.login = async (req, res, next) => {
+// login functin but error doesn't show 401 if there is error but 500 error handler needs work
+exports.login = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
   if (!email || !password) {
-    next(new AppError("please provide email and password", 300));
+    return next(new AppError("please provide email and password", 400));
   }
   const user = await Users.findOne({ email }).select("+password");
-  if (!user || !user.checkPassword(password, user.password)) {
-    return next(new AppError("incorrect email of password"), 491);
+  if (!user || !(await user.checkPassword(password, user.password))) {
+    return next(new AppError("incorrect email or password"), 401);
   }
   const token = assignToken(user._id);
   res.status(200).json({
     status: "sucess",
     token,
   });
-};
+});
 
 // update the workerdetails
 exports.updateUser = catchAsync(async (req, res, next) => {

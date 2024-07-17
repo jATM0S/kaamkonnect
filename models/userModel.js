@@ -39,7 +39,7 @@ userModel.pre("save", async function (next) {
   this.passwordConfirm = undefined;
   next();
 });
-userModel.methods.checkPassword = async (candidatePasswrod, userPassword) => {
+userModel.methods.checkPassword = async function(candidatePasswrod, userPassword) {
   return await bcrypt.compare(candidatePasswrod, userPassword);
 };
 const users = mongoose.model("users", userModel);
