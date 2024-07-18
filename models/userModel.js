@@ -3,7 +3,7 @@ const bcrypt = require("bcryptjs");
 const userModel = new mongoose.Schema({
   name: {
     type: String,
-    unique: true,
+    // unique: true,
     required: [true, "Name is necessary"],
   },
   email: {
