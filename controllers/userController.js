@@ -9,10 +9,29 @@ const assignToken = (id) => {
     expiresIn: process.env.JWT_EXPIRES_IN,
   });
 };
+
+exports.login = catchAsync(async (req, res, next) => {
+  const { email, password } = req.body;
+  // console.log(email, password);
+  if (!email || !password) {
+    return next(new AppError("Please enter email and password", 400));
+  }
+  const user = await Users.findOne({ email }).select("+password");
+  if(!user || !(await user.checkPassword(password,user.password))){
+    return next (new AppError("Email or password error"))
+  }
+  const token =assignToken(user._id)
+  res.status(200).json({
+    status: "sucess",
+    result: "found",
+    token,
+    data: { user },
+  });
+});
 //get a user
 exports.getUser = catchAsync(async (req, res, next) => {
   const findingAUser = await Users.findById(req.params.id);
-  if (!findingAUserr) {
+  if (!findingAUser) {
     return next(new AppError("No user of that ID!!", 404));
   }
   res.status(200).json({
@@ -77,23 +96,6 @@ exports.createUser = catchAsync(async (req, res, next) => {
     data: {
       user: newUser,
     },
-  });
-});
-
-// login functin but error doesn't show 401 if there is error but 500 error handler needs work
-exports.login = catchAsync(async (req, res, next) => {
-  const { email, password } = req.body;
-  if (!email || !password) {
-    return next(new AppError("please provide email and password", 400));
-  }
-  const user = await Users.findOne({ email }).select("+password");
-  if (!user || !(await user.checkPassword(password, user.password))) {
-    return next(new AppError("incorrect email or password"), 401);
-  }
-  const token = assignToken(user._id);
-  res.status(200).json({
-    status: "sucess",
-    token,
   });
 });
 

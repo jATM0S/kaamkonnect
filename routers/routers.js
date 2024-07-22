@@ -1,7 +1,7 @@
 const express = require("express");
 const workerControllers = require("../controllers/workerController");
 const userControllers = require("../controllers/userController");
-const authControllers=require("../controllers/authController")
+const authControllers = require("../controllers/authController");
 const router = express.Router();
 
 router
@@ -22,6 +22,7 @@ router
   .route("/users")
   .get(authControllers.loginAuth,userControllers.getUsers)
   .post(userControllers.createUser);
-// router.route("/users/login").post(userControllers.login);
+
+router.route("/users/login").post(userControllers.login);
 
 module.exports = router;
