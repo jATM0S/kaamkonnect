@@ -28,7 +28,7 @@ exports.login = catchAsync(async (req, res, next) => {
     data: { user },
   });
 });
-//get a user
+//get a user 
 exports.getUser = catchAsync(async (req, res, next) => {
   const findingAUser = await Users.findById(req.params.id);
   if (!findingAUser) {

@@ -29,10 +29,12 @@ exports.loginAuth = catchAsync(async (req, res, next) => {
   const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
   console.log(decoded);
 
-  //check if user still exists
-  // const freshUser = await Users.findById(decoded.id);
-  // if (!freshUser) {
-  //   new AppError("The user belonging to this token does not exist.", 401);
-  // }
+  // check if user still exists
+  const freshUser = await Users.findById(decoded.id);
+  if (!freshUser) {
+    new AppError("The user belonging to this token does not exist.", 401);
+  }
+
+  
   next();
 });
