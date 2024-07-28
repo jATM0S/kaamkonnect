@@ -12,6 +12,15 @@ const userModel = new mongoose.Schema({
     required: [true, "Email is necessary"],
     // validate: [validator.isEmail, "please provide valid email"],
   },
+  role: {
+    type: String,
+    enum: {
+      values: ["admin", "worker", "client"],
+      message: "Role of the user must be defined",
+    },
+    default: "worker",
+    required:[true,"The role is necessary"]
+  },
   password: {
     type: String,
     required: [true, "password is necessary"],
@@ -39,7 +48,10 @@ userModel.pre("save", async function (next) {
   this.passwordConfirm = undefined;
   next();
 });
-userModel.methods.checkPassword = async function(candidatePasswrod, userPassword) {
+userModel.methods.checkPassword = async function (
+  candidatePasswrod,
+  userPassword
+) {
   return await bcrypt.compare(candidatePasswrod, userPassword);
 };
 const users = mongoose.model("users", userModel);
