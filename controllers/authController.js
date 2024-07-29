@@ -27,14 +27,23 @@ exports.loginAuth = catchAsync(async (req, res, next) => {
 
   //verifying token
   const decoded = await promisify(jwt.verify)(token, process.env.JWT_SECRET);
-  console.log(decoded);
 
   // check if user still exists
-  const freshUser = await Users.findById(decoded.id);
-  if (!freshUser) {
+  const user = await Users.findById(decoded.id);
+  if (!user) {
     new AppError("The user belonging to this token does not exist.", 401);
   }
-
-  
+  req.user = user;
   next();
 });
+
+exports.restrict = (...roles) => {
+  return ( req,res, next) => {
+    if (!roles.includes(req.user.role)) {
+      return next(
+        new AppError("You do not have the permission for this action.", 403)
+      );
+    }
+    next();
+  };
+};

@@ -10,8 +10,8 @@ mongoose
   .then(() => console.log("DB connection successful.."))
   .catch((err) => console.error("DB connection error!! ", err));
 
-const workers = JSON.parse(fs.readFileSync("workerData.json", "utf-8"));
-const users = JSON.parse(fs.readFileSync("userData.json", "utf-8"));
+const workers = JSON.parse(fs.readFileSync("workerDataImport.json", "utf-8"));
+const users = JSON.parse(fs.readFileSync("userDataImport.json", "utf-8"));
 //importing worker data
 const importWorkerData = async () => {
   try {
@@ -20,6 +20,7 @@ const importWorkerData = async () => {
   } catch (err) {
     console.log(err);
   }
+  process.exit();
 };
 
 //delete worker data
@@ -30,6 +31,7 @@ const deleteWorkerData = async () => {
   } catch (err) {
     console.log(err);
   }
+  process.exit();
 };
 
 const importUserData = async () => {
@@ -39,6 +41,7 @@ const importUserData = async () => {
   } catch (err) {
     console.log(err);
   }
+  process.exit();
 };
 
 //delete worker data
@@ -49,19 +52,16 @@ const deleteUserData = async () => {
   } catch (err) {
     console.log(err);
   }
+  process.exit();
 };
 if (process.argv[2] == "--importWorkers") {
   importWorkerData();
-  process.exit();
 } else if (process.argv[2] == "--deleteWorkers") {
   deleteWorkerData();
-  process.exit();
 } else if (process.argv[2] == "--importUsers") {
   importUserData();
-  process.exit();
 } else if (process.argv[2] == "--deleteUsers") {
   deleteUserData();
-  process.exit();
 }
 
 console.log(process.argv);

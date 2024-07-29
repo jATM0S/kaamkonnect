@@ -1,0 +1,122 @@
+[
+  {
+    "name": "Alice Johnson",
+    "email": "alice.johnson@example.com",
+    "role": "admin",
+    "password": "password123",
+    "passwordConfirm": "password123",
+    "photo": "alice.jpg"
+  },
+  {
+    "name": "Bob Smith",
+    "email": "bob.smith@example.com",
+    "role": "worker",
+    "password": "password123",
+    "passwordConfirm": "password123",
+    "photo": "bob.jpg"
+  },
+  {
+    "name": "Charlie Brown",
+    "email": "charlie.brown@example.com",
+    "role": "client",
+    "password": "password123",
+    "passwordConfirm": "password123",
+    "photo": "charlie.jpg"
+  },
+  {
+    "name": "David Wilson",
+    "email": "david.wilson@example.com",
+    "role": "worker",
+    "password": "password123",
+    "passwordConfirm": "password123",
+    "photo": "david.jpg"
+  },
+  {
+    "name": "Eve Davis",
+    "email": "eve.davis@example.com",
+    "role": "admin",
+    "password": "password123",
+    "passwordConfirm": "password123",
+    "photo": "eve.jpg"
+  },
+  {
+    "name": "Frank Miller",
+    "email": "frank.miller@example.com",
+    "role": "client",
+    "password": "password123",
+    "passwordConfirm": "password123",
+    "photo": "frank.jpg"
+  },
+  {
+    "name": "Grace Lee",
+    "email": "grace.lee@example.com",
+    "role": "worker",
+    "password": "password123",
+    "passwordConfirm": "password123",
+    "photo": "grace.jpg"
+  },
+  {
+    "name": "Hank Martinez",
+    "email": "hank.martinez@example.com",
+    "role": "client",
+    "password": "password123",
+    "passwordConfirm": "password123",
+    "photo": "hank.jpg"
+  },
+  {
+    "name": "Ivy Gonzalez",
+    "email": "ivy.gonzalez@example.com",
+    "role": "worker",
+    "password": "password123",
+    "passwordConfirm": "password123",
+    "photo": "ivy.jpg"
+  },
+  {
+    "name": "Jack White",
+    "email": "jack.white@example.com",
+    "role": "admin",
+    "password": "password123",
+    "passwordConfirm": "password123",
+    "photo": "jack.jpg"
+  },
+  {
+    "name": "Kathy Harris",
+    "email": "kathy.harris@example.com",
+    "role": "worker",
+    "password": "password123",
+    "passwordConfirm": "password123",
+    "photo": "kathy.jpg"
+  },
+  {
+    "name": "Larry Clark",
+    "email": "larry.clark@example.com",
+    "role": "client",
+    "password": "password123",
+    "passwordConfirm": "password123",
+    "photo": "larry.jpg"
+  },
+  {
+    "name": "Megan Lewis",
+    "email": "megan.lewis@example.com",
+    "role": "worker",
+    "password": "password123",
+    "passwordConfirm": "password123",
+    "photo": "megan.jpg"
+  },
+  {
+    "name": "Nancy Walker",
+    "email": "nancy.walker@example.com",
+    "role": "client",
+    "password": "password123",
+    "passwordConfirm": "password123",
+    "photo": "nancy.jpg"
+  },
+  {
+    "name": "Oscar Young",
+    "email": "oscar.young@example.com",
+    "role": "admin",
+    "password": "password123",
+    "passwordConfirm": "password123",
+    "photo": "oscar.jpg"
+  }
+]

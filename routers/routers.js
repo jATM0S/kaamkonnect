@@ -7,22 +7,32 @@ const router = express.Router();
 router
   .route("/workers/:id")
   .get(workerControllers.getWorker)
-  .patch(authControllers.loginAuth,workerControllers.updateWorker)
-  .delete(authControllers.loginAuth,workerControllers.deleteWorker);
+  .patch(
+    authControllers.loginAuth,
+    authControllers.restrict("admin", "worker"),
+    workerControllers.updateWorker
+  )
+  .delete(
+    authControllers.loginAuth,
+    authControllers.restrict("admin", "worker"),
+    workerControllers.deleteWorker
+  );
 router
   .route("/workers")
   .get(workerControllers.getWorkers)
-  .post(authControllers.loginAuth,workerControllers.createWorker);
+  .post(
+    authControllers.loginAuth,
+    authControllers.restrict("admin", "worker"),
+    workerControllers.createWorker
+  );
 router
   .route("/users/:id")
   .get(userControllers.getUser)
-  .patch(authControllers.loginAuth,userControllers.updateUser)
-  .delete(authControllers.loginAuth,userControllers.deleteUser);
-router
-  .route("/users")
-  .get(authControllers.loginAuth,userControllers.getUsers)
-  .post(userControllers.createUser);
+  .patch(authControllers.loginAuth, userControllers.updateUser)
+  .delete(authControllers.loginAuth, userControllers.deleteUser);
+router.route("/users").get(userControllers.getUsers);
 
-router.route("/users/login").post(userControllers.login);
+router.post("/signUp", userControllers.createUser);
+router.post("/login", userControllers.login);
 
 module.exports = router;
