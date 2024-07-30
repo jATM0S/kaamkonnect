@@ -38,7 +38,7 @@ exports.loginAuth = catchAsync(async (req, res, next) => {
 });
 
 exports.restrict = (...roles) => {
-  return ( req,res, next) => {
+  return (req, res, next) => {
     if (!roles.includes(req.user.role)) {
       return next(
         new AppError("You do not have the permission for this action.", 403)
@@ -46,4 +46,14 @@ exports.restrict = (...roles) => {
     }
     next();
   };
+};
+
+exports.forgotPassword = async (req, res, next) => {
+  const user = await Users.findOne({ email: req.body.email });
+  if (!user) {
+    return next(new AppError("There is no use with that email address.", 404));
+  }
+
+  const resetToken = Math.floor(Math.random() * (max - min + 1)) + min;
+  return resetToken;
 };
