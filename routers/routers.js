@@ -34,6 +34,6 @@ router.route("/users").get(userControllers.getUsers);
 
 router.post("/signUp", userControllers.createUser);
 router.post("/login", userControllers.login);
-router.post("/forgotPassword",authControllers)
+router.post("/forgotPassword",authControllers.forgotPassword)
 
 module.exports = router;

@@ -53,7 +53,6 @@ exports.forgotPassword = async (req, res, next) => {
   if (!user) {
     return next(new AppError("There is no use with that email address.", 404));
   }
-
-  const resetToken = Math.floor(Math.random() * (max - min + 1)) + min;
-  return resetToken;
+  const resetToken = await user.createPasswordResetToken();
+  await user.save({ validateBeforeSave: false });
 };
