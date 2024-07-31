@@ -58,13 +58,13 @@ userModel.methods.checkPassword = async function (
   return await bcrypt.compare(candidatePasswrod, userPassword);
 };
 userModel.methods.createPasswordResetToken = async function () {
-  const resetToken = String(Math.floor(Math.random() * 10000));
+  const resetToken = String(Math.floor(Math.random() * 10000)).padStart(4, "0");
   this.createPasswordResetToken = crypto
     .createHash("sha256")
     .update(resetToken)
     .digest("hex");
   this.tokenExpiresAt = Date.now() + 10 * 60 * 1000;
-  console.log(resetToken,this.tokenExpiresAt);
+  console.log(resetToken, this.tokenExpiresAt);
   return resetToken;
 };
 const users = mongoose.model("users", userModel);
