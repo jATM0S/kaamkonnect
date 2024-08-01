@@ -56,12 +56,10 @@ exports.forgotPassword = async (req, res, next) => {
   const resetToken = await user.createPasswordResetToken();
   await user.save({ validateBeforeSave: false });
 
-  const resetURL = "ungapunga";
-  // `${req.protocol}://${req.get(
-  //   host
-  // )}/resetPassword/${resetToken}`;
+  const resetURL = `${req.protocol}://${req.get(
+    "host"
+  )}/resetPassword/${resetToken}`;
   const message = `Forgot your password? submit a patch request with your new password and passwordConfirt to: ${resetURL}`;
-
   try {
     await sendEmail({
       email: user.email,
