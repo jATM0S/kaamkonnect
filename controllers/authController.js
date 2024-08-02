@@ -5,6 +5,8 @@ const AppError = require("../utils/appError");
 const Users = require("../models/userModel");
 const { promisify } = require("util");
 const sendEmail = require("../utils/email");
+const crypto = require("crypto");
+
 const assignToken = (id) => {
   return jwt.sign({ id }, process.env.JWT_SECRET, {
     expiresIn: process.env.JWT_EXPIRES_IN,
@@ -74,8 +76,30 @@ exports.forgotPassword = async (req, res, next) => {
     user.passwordResetToken = undefined;
     user.tokenExpiresAt = undefined;
     await user.save({ validateBeforeSave: false });
-    return next(new AppError("Error sending email. Try again later:"), 500);
+    return next(new AppError("Error sending email. Try again later!!"), 500);
   }
 };
 
-exports.resetPassword = async (req, res, next) => {};
+exports.resetPassword = catchAsync(async (req, res, next) => {
+  const hashedToken = crypto
+    .createHash("sha256")
+    .update(req.prams.token)
+    .digest("hex");
+  const user = Users.findOne({
+    passwordResetToken: hashedToken,
+    tokenExpiresAt: { $gt: Date.now() },
+  });
+  if (!user) {
+    return next(new AppError("Token isn invalid or has expired"), 404);
+  }
+  user.password = req.body.password;
+  user.passwordConfirm = req.body.passwordConfirm;
+  user.passwordResetToken = undefined;
+  user.tokenExpiresAt = undefined;
+  await user.save();
+  assignToken(user._id);
+  res.status(200).json({
+    status: "sucess",
+    token,
+  });
+});
