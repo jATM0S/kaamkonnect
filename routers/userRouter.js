@@ -9,4 +9,5 @@ usersRouter
   .patch(authControllers.loginAuth, userControllers.updateUser)
   .delete(authControllers.loginAuth, userControllers.deleteUser);
 usersRouter.route("/").get(userControllers.getUsers);
+
 module.exports = usersRouter;

@@ -18,11 +18,11 @@ exports.updatePassword = catchAsync(async (req, res, next) => {
   if (!user) {
     return new (AppError("No user found", 404))();
   }
-  if (!(await user.checkPassword(req.oldPassword, user.password))) {
+  if (!(await user.checkPassword(req.body.oldPassword, user.password))) {
     return new (AppError("The password is incorrect", 403))();
   }
-  user.password = req.newPassword;
-  user.passwordConfirm = req.newPasswordConfirm;
+  user.password = req.body.newPassword;
+  user.passwordConfirm = req.body.newPasswordConfirm;
   await user.save();
   res
     .status(200)

@@ -9,9 +9,11 @@ router.use("/workers", workersRouter);
 
 router.use("/users", usersRouter);
 
-router
-  .post("/updatePassword")
-  .patch(authControllers.loginAuth, authControllers.updatePassword);
+router.patch(
+  "/updatePassword",
+  authControllers.loginAuth,
+  authControllers.updatePassword
+);
 router.post("/signUp", userControllers.createUser);
 router.post("/login", userControllers.login);
 router.post("/forgotPassword", authControllers.forgotPassword);
