@@ -13,6 +13,21 @@ const assignToken = (id) => {
   });
 };
 
+exports.updatePassword = catchAsync(async (req, res, next) => {
+  const user = await Users.findOne({ _id: req.user.id }).select("+password");
+  if (!user) {
+    return new (AppError("No user found", 404))();
+  }
+  if (!(await user.checkPassword(req.oldPassword, user.password))) {
+    return new (AppError("The password is incorrect", 403))();
+  }
+  user.password = req.newPassword;
+  user.passwordConfirm = req.newPasswordConfirm;
+  await user.save();
+  res
+    .status(200)
+    .json({ status: "sucess", message: "password changed sucessfully" });
+});
 exports.loginAuth = catchAsync(async (req, res, next) => {
   let token;
   if (
