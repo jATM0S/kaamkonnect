@@ -1,27 +1,18 @@
 const mongoose = require("mongoose");
-const workerModel = new mongoose.Schema({
+const workModel = new mongoose.Schema({
   name: {
     type: String,
-    required: [true, "A name is compulsory"],
+    required: [true, "A title is compulsory"],
   },
-  rating: {
-    type: Number,
-    default: 4.5,
-  },
+
   price: {
     type: Number,
     required: [true, "Price must be quoted"],
   },
-  availability: {
-    type: [String],
-  },
-  skill: {
-    type: String,
-    required: [true, "The skill is necessary"],
-  },
+
   description: {
     type: String,
-    required: [true, "The skill description is necessary"],
+    required: [true, "Description of task is necessary"],
   },
   experience: {
     type: String,
@@ -29,10 +20,18 @@ const workerModel = new mongoose.Schema({
   },
   skillLevel: {
     type: String,
-    required: [true, "need skill level"],
+    required: [true, "Need skill level"],
     enum: {
       values: ["skilled", "very skilled", "basic"],
-      message:"Skill can be skilled, very skilled or basic only."
+      message: "Skills can be skilled, very skilled or basic only.",
+    },
+  },
+  status: {
+    type: String,
+    required: [true, "Need status to describe the completeness of work"],
+    enum: {
+      values: ["pending", "accepted", "completed"],
+      message: "Status of the task should be stated",
     },
   },
   images: {
@@ -46,5 +45,5 @@ const workerModel = new mongoose.Schema({
   },
 });
 
-const workers = mongoose.model("worker", workerModel);
-module.exports = workers;
+const work = mongoose.model("works", workModel);
+module.exports = work;
