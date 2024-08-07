@@ -17,10 +17,10 @@ exports.login = catchAsync(async (req, res, next) => {
     return next(new AppError("Please enter email and password", 400));
   }
   const user = await Users.findOne({ email }).select("+password");
-  if(!user || !(await user.checkPassword(password,user.password))){
-    return next (new AppError("Email or password error"))
+  if (!user || !(await user.checkPassword(password, user.password))) {
+    return next(new AppError("Email or password error"));
   }
-  const token =assignToken(user._id)
+  const token = assignToken(user._id);
   res.status(200).json({
     status: "sucess",
     result: "found",
@@ -28,7 +28,7 @@ exports.login = catchAsync(async (req, res, next) => {
     data: { user },
   });
 });
-//get a user 
+//get a user
 exports.getUser = catchAsync(async (req, res, next) => {
   const findingAUser = await Users.findById(req.params.id);
   if (!findingAUser) {
@@ -101,7 +101,15 @@ exports.createUser = catchAsync(async (req, res, next) => {
 
 // update the workerdetails
 exports.updateUser = catchAsync(async (req, res, next) => {
-  const updateUser = await Users.findByIdAndUpdate(req.params.id, req.body, {
+  const filterObj = (obj, ...allowedFields) => {
+    const newObj = {};
+    Object.keys(obj).forEach((el) => {
+      if (allowedFields.includes(el)) newObj[el] = obj[el];
+    });
+    return newObj;
+  };
+  const filterBody = filterObj(req.body, "name", "email");
+  const updateUser = await Users.findByIdAndUpdate(req.user.id, filterBody, {
     new: true,
   });
   if (!updateUser) {
