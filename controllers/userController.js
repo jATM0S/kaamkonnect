@@ -1,14 +1,8 @@
-const jwt = require("jsonwebtoken");
 const express = require("express");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 const Users = require("../models/userModel");
-
-const assignToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRES_IN,
-  });
-};
+const tokenUtil = require("../utils/token");
 
 exports.login = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
@@ -20,13 +14,8 @@ exports.login = catchAsync(async (req, res, next) => {
   if (!user || !(await user.checkPassword(password, user.password))) {
     return next(new AppError("Email or password error"));
   }
-  const token = assignToken(user._id);
-  res.status(200).json({
-    status: "sucess",
-    result: "found",
-    token,
-    data: { user },
-  });
+
+  tokenUtil.createSendToken(user, 200, res);
 });
 //get a user
 exports.getUser = catchAsync(async (req, res, next) => {
@@ -89,14 +78,8 @@ exports.createUser = catchAsync(async (req, res, next) => {
     password: req.body.password,
     passwordConfirm: req.body.passwordConfirm,
   });
-  const token = assignToken(newUser._id);
-  res.status(201).json({
-    status: "success",
-    token,
-    data: {
-      user: newUser,
-    },
-  });
+
+  tokenUtil.createSendToken(newUser, 201, res);
 });
 
 // update the workerdetails

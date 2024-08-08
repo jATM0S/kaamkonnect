@@ -6,12 +6,7 @@ const Users = require("../models/userModel");
 const { promisify } = require("util");
 const sendEmail = require("../utils/email");
 const crypto = require("crypto");
-
-const assignToken = (id) => {
-  return jwt.sign({ id }, process.env.JWT_SECRET, {
-    expiresIn: process.env.JWT_EXPIRES_IN,
-  });
-};
+const tokenUtil = require("../utils/token");
 
 exports.updatePassword = catchAsync(async (req, res, next) => {
   const user = await Users.findOne({ _id: req.user.id }).select("+password");
@@ -112,9 +107,6 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
   user.passwordResetToken = undefined;
   user.tokenExpiresAt = undefined;
   await user.save();
-  assignToken(user._id);
-  res.status(200).json({
-    status: "sucess",
-    token,
-  });
+  
+  tokenUtil.createSendToken(user,200,res)
 });
