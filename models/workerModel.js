@@ -8,6 +8,10 @@ const workerModel = new mongoose.Schema({
     type: Number,
     default: 4.5,
   },
+  location:{
+    type:String,
+    required:[true,"location of worker residence should be filled"]
+  },
   price: {
     type: Number,
     required: [true, "Price must be quoted"],
