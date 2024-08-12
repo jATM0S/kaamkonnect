@@ -47,7 +47,7 @@ exports.deleteWork = catchAsync(async (req, res, next) => {
 });
 
 // getting all the workers with filtering and sorting and pagination
-exports.getWork = catchAsync(async (req, res, next) => {
+exports.getWorks = catchAsync(async (req, res, next) => {
   // filtering
   const queryObj = { ...req.query };
   const excludedFields = ["page", "sort", "limit", "fields"];

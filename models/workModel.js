@@ -18,6 +18,10 @@ const workModel = new mongoose.Schema({
     type: String,
     required: [true, "The experience you have is necessary to put in"],
   },
+  skill:{
+    type:String,
+    required:[true,"The skill of for the work is required"],
+  },
   skillLevel: {
     type: String,
     required: [true, "Need skill level"],
