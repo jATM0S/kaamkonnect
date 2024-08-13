@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+  
 const reviewModel = new mongoose.Schema({
   review: {
     type: String,
@@ -15,16 +16,16 @@ const reviewModel = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
-  user:{
-    type:mongoose.Schena.ObjectId,
-    ref:'users',
-    required:[true,"The user must be defind."]
+  reviewer: {
+    type: mongoose.Schema.ObjectId,
+    ref: "users",
+    required: [true, "The user must be defind."],
   },
-  worker:{
-    rype:mongoose.Schema.ObjectId,
-    ref:"workers",
-    required:[true,'The worker to whom review is given must be specified.']
-},
+  worker: {
+    type: mongoose.Schema.ObjectId,
+    ref: "worker",
+    required: [true, "The worker to whom review is given must be specified."],
+  },
 });
 const review = mongoose.model("review", reviewModel);
 module.exports = review;

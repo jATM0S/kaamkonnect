@@ -3,7 +3,8 @@ const userControllers = require("../controllers/userController");
 const authControllers = require("../controllers/authController");
 const workersRouter = require("./workersRouter");
 const usersRouter = require("./userRouter");
-const workRouter=require("./workRouter")
+const workRouter = require("./workRouter");
+const reviewRouter = require("./reviewRouter");
 const router = express.Router();
 
 router.use("/workers", workersRouter);
@@ -12,6 +13,7 @@ router.use("/users", usersRouter);
 
 router.use("/work", workRouter);
 
+router.use("/review", reviewRouter);
 
 router.patch(
   "/updatePassword",
