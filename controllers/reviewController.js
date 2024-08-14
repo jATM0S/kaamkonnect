@@ -2,7 +2,6 @@ const Reviews = require("../models/reviewModel");
 const AppError = require("../utils/appError");
 const catchAsync = require("../utils/catchAsync");
 
-
 exports.createReview = catchAsync(async (req, res, next) => {
   console.log(req.body);
   const review = await Reviews.create({
@@ -18,8 +17,13 @@ exports.createReview = catchAsync(async (req, res, next) => {
     data: { review },
   });
 });
-const findReview = catchAsync(async (req, res, next) => {
-  const review = await Reviews.findById();
+exports.findAllReview = catchAsync(async (req, res, next) => {
+  const review = await Reviews.find();
+  res.status(200).json({
+    staus: "sucess",
+    result: "all reviews were found",
+    data: { review },
+  });
 });
 
 exports.editReview = catchAsync(async (req, res, next) => {
@@ -35,11 +39,9 @@ exports.editReview = catchAsync(async (req, res, next) => {
 exports.deleteReveiw = catchAsync(async (req, res, next) => {
   const review = await Reviews.findOneAndDelete(req.body.reveiw_id);
   if (!review) next(new AppError(401, "There is no reveiw."));
-  res
-    .status(200)
-    .json({
-      status: "sucess",
-      result: "The review was deleted",
-      data: { review },
-    });
+  res.status(200).json({
+    status: "sucess",
+    result: "The review was deleted",
+    data: { review },
+  });
 });

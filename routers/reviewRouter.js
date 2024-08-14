@@ -5,6 +5,11 @@ const reviewRouter = express.Router();
 
 reviewRouter
   .route("/")
+  .get(
+    authController.loginAuth,
+    authController.restrict("admin"),
+    reviewController.findAllReview
+  )
   .post(
     authController.loginAuth,
     authController.restrict("admin", "client"),
