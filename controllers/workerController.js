@@ -87,7 +87,9 @@ exports.getWorkers = catchAsync(async (req, res, next) => {
 
 // get an worker
 exports.getWorker = catchAsync(async (req, res, next) => {
-  const findingAWorker = await worker.findById(req.params.id);
+  const findingAWorker = await worker
+    .findById(req.params.id)
+    .populate("reviews");
   if (!findingAWorker) {
     return next(new AppError("No worker of that ID!!", 404));
   }

@@ -3,7 +3,6 @@ const AppError = require("../utils/appError");
 const catchAsync = require("../utils/catchAsync");
 
 exports.createReview = catchAsync(async (req, res, next) => {
-  console.log(req.body);
   const review = await Reviews.create({
     review: req.body.review,
     rating: req.body.rating,

@@ -1,10 +1,7 @@
 const mongoose = require("mongoose");
 
 const reviewModel = new mongoose.Schema({
-  review: {
-    type: String,
-    required: [true, "There should be review body present,"],
-  },
+  review: String,
   rating: {
     type: Number,
     required: [true, "The no of stars should be given."],
@@ -31,11 +28,11 @@ const reviewModel = new mongoose.Schema({
 reviewModel.pre(/^find/, function (next) {
   this.populate({
     path: "reviewer",
-    select:'name photo',
+    select: "name photo",
   }).populate({
-    path:'worker',
-    select:'name'
-  })
+    path: "worker",
+    select: "name",
+  });
   next();
 });
 const review = mongoose.model("review", reviewModel);
