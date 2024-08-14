@@ -26,7 +26,9 @@ exports.findAllReview = catchAsync(async (req, res, next) => {
 });
 
 exports.editReview = catchAsync(async (req, res, next) => {
-  const review = await Reviews.findOneAndUpdate(req.body);
+  const review = await Reviews.findByIdAndUpdate(req.params.id, req.body, {
+    new: true,
+  });
   if (!review) next(new AppError(401, "Uncessful to update review"));
   res.status(200).json({
     status: "sucess",

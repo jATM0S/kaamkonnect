@@ -1,11 +1,11 @@
 const { json } = require("express");
-const worker = require("../models/workerModel");
+const Worker = require("../models/workerModel");
 const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 
 // creating a worker
 exports.createWorker = catchAsync(async (req, res, next) => {
-  const newWorker = await worker.create(req.body);
+  const newWorker = await Worker.create(req.body);
   res.status(201).json({
     status: "success",
     data: {
@@ -16,10 +16,10 @@ exports.createWorker = catchAsync(async (req, res, next) => {
 
 // update the workerdetails
 exports.updateWorker = catchAsync(async (req, res, next) => {
-  const updateWorker = await worker.findByIdAndUpdate(req.params.id, req.body, {
+  const updateWorker = await Worker.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
   });
-  if (!updateWorker) {
+  if (!updateWorker) { 
     return next(new AppError("No worker of that ID!!", 404));
   }
   res.status(200).json({
@@ -33,7 +33,7 @@ exports.updateWorker = catchAsync(async (req, res, next) => {
 
 // delete the worker
 exports.deleteWorker = catchAsync(async (req, res, next) => {
-  const deleteWorker = await worker.findByIdAndDelete(req.params.id);
+  const deleteWorker = await Worker.findByIdAndDelete(req.params.id);
   if (!deleteWorker) {
     return next(new AppError("No worker of that ID!!", 404));
   }
@@ -71,7 +71,7 @@ exports.getWorkers = catchAsync(async (req, res, next) => {
   const skip = (page - 1) * limit;
   query = query.skip(skip).limit(10);
   if (req.query.page) {
-    const numWorkers = await worker.countDocuments();
+    const numWorkers = await Worker.countDocuments();
     if (skip >= numWorkers) throw new Error("this page does not exist");
   }
   // finding the workers
@@ -87,7 +87,7 @@ exports.getWorkers = catchAsync(async (req, res, next) => {
 
 // get an worker
 exports.getWorker = catchAsync(async (req, res, next) => {
-  const findingAWorker = await worker
+  const findingAWorker = await Worker
     .findById(req.params.id)
     .populate("reviews");
   if (!findingAWorker) {
