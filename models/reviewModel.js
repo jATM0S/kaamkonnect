@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-  
+
 const reviewModel = new mongoose.Schema({
   review: {
     type: String,
@@ -26,6 +26,17 @@ const reviewModel = new mongoose.Schema({
     ref: "worker",
     required: [true, "The worker to whom review is given must be specified."],
   },
+});
+
+reviewModel.pre(/^find/, function (next) {
+  this.populate({
+    path: "reviewer",
+    select:'name photo',
+  }).populate({
+    path:'worker',
+    select:'name'
+  })
+  next();
 });
 const review = mongoose.model("review", reviewModel);
 module.exports = review;
