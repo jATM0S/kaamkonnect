@@ -3,7 +3,6 @@ const catchAsync = require("../utils/catchAsync");
 const AppError = require("../utils/appError");
 const Users = require("../models/userModel");
 const tokenUtil = require("../utils/token");
-const review = require("../models/reviewModel");
 
 exports.login = catchAsync(async (req, res, next) => {
   const { email, password } = req.body;
@@ -29,16 +28,6 @@ exports.getMe = catchAsync(async (req, res, next) => {
     data: {
       findingMe,
     },
-  });
-});
-exports.getReviews = catchAsync(async (req, res, next) => {
-  let reviews = [];
-  reviews.push(await review.find({ reviewer: req.user.id }));
-  if (!reviews) next(new AppError("no reviews by this user", 404));
-  res.status(200).json({
-    status: "sucess",
-    message: "reviews by the reviews were found.",
-    data: { reviews },
   });
 });
 //get a user

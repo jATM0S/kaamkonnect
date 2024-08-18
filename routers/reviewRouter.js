@@ -1,31 +1,41 @@
 const express = require("express");
-const authController = require("../controllers/authController");
-const reviewController = require("../controllers/reviewController");
+const authControllers = require("../controllers/authController");
+const reviewControllers = require("../controllers/reviewController");
 const reviewRouter = express.Router();
 
 reviewRouter
   .route("/")
   .get(
-    authController.loginAuth,
-    authController.restrict("admin"),
-    reviewController.findAllReview
+    authControllers.loginAuth,
+    authControllers.restrict("admin"),
+    reviewControllers.findAllReview
   )
   .post(
-    authController.loginAuth,
-    authController.restrict("admin", "client"),
-    reviewController.createReview
+    authControllers.loginAuth,
+    authControllers.restrict("admin", "client"),
+    reviewControllers.createReview
   );
 
 reviewRouter
   .route("/:id")
   .patch(
-    authController.loginAuth,
-    authController.restrict("admin", "client"),
-    reviewController.editReview
+    authControllers.loginAuth,
+    authControllers.restrict("admin", "client"),
+    reviewControllers.editReview
   )
   .delete(
-    authController.loginAuth,
-    authController.restrict("admin", "client"),
-    reviewController.deleteReveiw
+    authControllers.loginAuth,
+    authControllers.restrict("admin", "client"),
+    reviewControllers.deleteReveiw
   );
+reviewRouter.get(
+  "/userReviews",
+  authControllers.loginAuth,
+  reviewControllers.userReviews
+);
+reviewRouter.get(
+  "/workerReviews",
+  authControllers.loginAuth,
+  reviewControllers.workerReviews
+);
 module.exports = reviewRouter;

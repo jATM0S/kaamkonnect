@@ -21,11 +21,7 @@ router.patch(
   authControllers.updatePassword
 );
 router.get("/user", authControllers.loginAuth, userControllers.getMe);
-router.get(
-  "/userReviews",
-  authControllers.loginAuth,
-  userControllers.getReviews
-);
+
 router.post("/signUp", userControllers.createUser);
 router.post("/login", userControllers.login);
 router.post("/forgotPassword", authControllers.forgotPassword);
