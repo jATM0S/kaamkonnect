@@ -24,7 +24,7 @@ const reviewModel = new mongoose.Schema({
     required: [true, "The worker to whom review is given must be specified."],
   },
 });
-
+reviewModel.index({ reviewer: 1, worker: 1 }, { unique: true });
 reviewModel.pre(/^find/, function (next) {
   this.populate({
     path: "reviewer",

@@ -5,16 +5,13 @@ const catchAsync = require("../utils/catchAsync");
 
 const ratingRecalculate = async (review) => {
   let reviews = await Reviews.find({ worker: review.worker });
-  console.log(review);
   if (!reviews) return;
-  console.log(reviews);
   let average = 0;
   for (let i = 0; i < reviews.length; i++) {
     average += reviews[i].rating; // Access the rating field of each review object
   }
   average /= reviews.length;
   average = parseFloat(average.toFixed(1));
-  console.log(average);
   const worker = await Workers.findByIdAndUpdate(review.worker, {
     rating: average,
   });

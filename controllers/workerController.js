@@ -57,7 +57,7 @@ exports.getWorkers = catchAsync(async (req, res, next) => {
   let queryStr = JSON.stringify(queryObj);
   queryStr = queryStr.replace(/\b(gte|gt|lte|lt)\b/g, (match) => `$${match}`);
 
-  let query = worker.find(JSON.parse(queryStr));
+  let query = Worker.find(JSON.parse(queryStr));
 
   // sorting
   if (req.query.sort) {
