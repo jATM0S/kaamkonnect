@@ -4,7 +4,7 @@ const mongoSanitize = require("express-mongo-sanitize");
 const xss = require("xss-clean");
 const AppError = require("./utils/appError");
 const globalErrorHandler = require("./utils/errorController");
-const path = require('path');
+const path = require("path");
 
 app.use(express.json());
 
@@ -15,9 +15,11 @@ app.use(xss());
 
 //view stuff
 app.set("view engine", "ejs");
+
 app.set("views", path.join(__dirname, "views"));
+app.use(express.static(path.join(__dirname,"public")));
 app.get("/", (req, res) => {
-  res.status(200).render("pages/base");
+  res.status(200).render("./pages/base.ejs");
 });
 
 //backend routes stuff
