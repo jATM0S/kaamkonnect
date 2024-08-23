@@ -6,7 +6,9 @@
   "scripts": {
     "start": "nodemon server.js",
     "debug": "ndb server.js",
-    "start:prod": "cross-env NODE_ENV=production nodemon server.js"
+    "start:prod": "cross-env NODE_ENV=production nodemon server.js",
+    "build:css": "tailwindcss build -i ./public/input.css -o ./public/output.css --minify",
+    "watch:css": "tailwindcss build -i ./public/input.css -o ./public/output.css --watch"
   },
   "author": "",
   "license": "ISC",
