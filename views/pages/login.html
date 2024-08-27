@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../../public/output.css" />
+  </head>
+  <body>
+    <div class="flex justify-center items-center h-screen">
+      <div
+        class="h-auto w-96 py-8 flex flex-col justify-center items-center border border-black"
+      >
+        <form action="POST">
+          <div class="flex flex-col p-4 gap-2">
+            <p class="text-center font-semibold">Log In</p>
+            <label for="login" class="text-md">Email:</label>
+            <input
+              type="email"
+              class="border-[1px] border-gray-600 text-md p-2 text-gray-600"
+              placeholder="Email Address"
+            />
+            <label for="login" class="text-md">Password:</label>
+            <input
+              type="pasword"
+              class="border-[1px] border-gray-600 text-md p-2 text-gray-600"
+              placeholder="Email Address"
+            />
+            <a href="#" class="text-blue-700 text-[14px] underline"
+              >Forgot your Password?</a
+            >
+            <button
+              class="border-[1px] bg-green-700 px-2 py-1 rounded-2xl w-full text-white"
+            >
+              Login
+            </button>
+            <button
+              class="border-[1px] bg-blue-600 px-2 py-1 rounded-2xl w-full text-white"
+            >
+              Sign In
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
