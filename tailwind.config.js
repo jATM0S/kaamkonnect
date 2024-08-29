@@ -2,7 +2,9 @@
 module.exports = {
   content: ["./views/**/*.{html,ejs,js}"],
   theme: {
-    extend: {},
+    extend: {height: {
+      'screen-nav': 'calc(100vh - 64px)',
+    },},
   },
   plugins: [],
 };
