@@ -4,6 +4,18 @@ function toggleSettingDropdown() {
     dropdownMenu.classList.toggle("hidden");
   }
 }
+function toggleDashboardDropdown() {
+  const dasnboardDropdownMenu = document.getElementById(
+    "dasnboardDropdownMenu"
+  );
+  if (window.innerWidth < 768) {
+    dasnboardDropdownMenu.classList.toggle("hidden");
+  }
+}
+function toggleProfiledropdown() {
+  const profileDropdown = document.getElementById("profileDropdown");
+  profileDropdown.classList.toggle("hidden");
+}
 function toggleNavMenu() {
   const dropdownNav = document.getElementById("dropdownNav");
   if (window.innerWidth < 768) {

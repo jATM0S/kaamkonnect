@@ -641,10 +641,6 @@ video {
   margin: 0.5rem;
 }
 
-.m-3 {
-  margin: 0.75rem;
-}
-
 .mx-auto {
   margin-left: auto;
   margin-right: auto;
@@ -761,8 +757,8 @@ video {
   height: 10rem;
 }
 
-.h-56 {
-  height: 14rem;
+.h-48 {
+  height: 12rem;
 }
 
 .h-6 {
@@ -791,10 +787,6 @@ video {
 
 .h-screen {
   height: 100vh;
-}
-
-.h-48 {
-  height: 12rem;
 }
 
 .w-10 {
@@ -903,10 +895,6 @@ video {
 
 .items-center {
   align-items: center;
-}
-
-.justify-end {
-  justify-content: flex-end;
 }
 
 .justify-center {
@@ -1086,14 +1074,14 @@ video {
   background-color: rgb(185 28 28 / var(--tw-bg-opacity));
 }
 
-.bg-white {
-  --tw-bg-opacity: 1;
-  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
-}
-
 .bg-red-800 {
   --tw-bg-opacity: 1;
   background-color: rgb(153 27 27 / var(--tw-bg-opacity));
+}
+
+.bg-white {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
 .bg-\[url\(\'\.\.\/\.\.\/public\/subtlebg\.png\'\)\] {
@@ -1505,16 +1493,12 @@ video {
     height: 2.25rem;
   }
 
-  .md\:h-screen-nav {
-    height: calc(100vh - 64px);
-  }
-
-  .md\:h-screen {
-    height: 100vh;
-  }
-
   .md\:h-auto {
     height: auto;
+  }
+
+  .md\:h-screen-nav {
+    height: calc(100vh - 64px);
   }
 
   .md\:w-28 {
@@ -1600,12 +1584,12 @@ video {
     padding-top: 2.5rem;
   }
 
-  .md\:pt-8 {
-    padding-top: 2rem;
-  }
-
   .md\:pt-6 {
     padding-top: 1.5rem;
+  }
+
+  .md\:pt-8 {
+    padding-top: 2rem;
   }
 
   .md\:text-left {
