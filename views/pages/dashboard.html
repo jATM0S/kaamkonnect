@@ -219,19 +219,30 @@
           Worker Details
         </button>
         <button
-          onclick="toggleDashbaordDropdown()"
+          onclick="toggleDashboardDropdown()"
           class="rounded-md px-3 py-2 text-sm font-medium bg-gray-800 hover:bg-gray-700 text-white md:h-9 md:w-full md:mt-8"
         >
           Dashboard
         </button>
-        <button
-          class="rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-700 hover:text-white text-gray-800 md:h-9 md:w-full md:mt-8"
-        >
-          Settings
-        </button>
+        <!-- normal screen dropdown -->
+        <div class="w-full hidden" id="dashboardDropdownmd">
+          <div class="flex flex-col items-end">
+            <button
+              class="rounded-md py-2 text-sm font-medium bg-gray-700 hover:bg-gray-600 text-white md:h-9 md:w-28 hidden md:block"
+            >
+              Work
+            </button>
+            <button
+              class="rounded-md py-2 text-sm font-medium text-gray-800 hover:bg-gray-600 hover:text-white md:h-9 md:w-28 hidden md:block"
+            >
+              Reviews
+            </button>
+          </div>
+        </div>
+        <!-- small screen dropdown menu -->
         <div
-          id="dasnboardDropdownMenu"
-          class="hidden border border-black absolute right-1 z-10 mt-10 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+          id="dashboardDropdownsm"
+          class="hidden border border-black absolute z-10 mt-10 w-56 rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
           role="menu"
           aria-orientation="vertical"
           aria-labelledby="menu-button"
@@ -276,28 +287,11 @@
             </form>
           </div>
         </div>
-        <div class="w-full">
-          <button
-            class="rounded-md px-3 py-2 m-2 text-sm font-medium bg-gray-700 hover:bg-gray-600 text-white md:h-9 md:w-28 md:ml-10 hidden md:block"
-          >
-            Profile details
-          </button>
-          <button
-            class="rounded-md px-3 py-2 m-2 text-sm font-medium text-gray-800 hover:bg-gray-600 hover:text-white md:h-9 md:w-28 md:ml-10 hidden md:block"
-          >
-            Work details
-          </button>
-          <button
-            class="rounded-md px-3 py-2 m-2 text-sm font-medium text-gray-800 hover:bg-gray-600 hover:text-white md:h-9 md:w-28 md:ml-10 hidden md:block"
-          >
-            Password
-          </button>
-          <button
-            class="rounded-md px-3 py-2 m-2 text-sm font-medium text-gray-800 hover:bg-gray-600 hover:text-white md:h-9 md:w-28 md:ml-10 hidden md:block"
-          >
-            Delete
-          </button>
-        </div>
+        <button
+          class="rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-700 hover:text-white text-gray-800 md:h-9 md:w-full md:mt-8"
+        >
+          Settings
+        </button>
       </div>
       <div
         class="flex flex-col items-center p-4 bg-[url('../../public/subtlebg.png')] md:flex-col md:justify-evenly md:p-4 w-full"

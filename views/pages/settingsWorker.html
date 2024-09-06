@@ -227,8 +227,9 @@
         >
           Settings
         </button>
+        <!-- settings dropdown sm -->
         <div
-          id="dropdownMenu"
+          id="settingsDropdownsm"
           class="hidden border border-black absolute right-1 z-10 mt-10 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
           role="menu"
           aria-orientation="vertical"
@@ -274,27 +275,30 @@
             </form>
           </div>
         </div>
-        <div class="w-full">
-          <button
-            class="rounded-md px-3 py-2 m-2 text-sm font-medium bg-gray-700 hover:bg-gray-600 text-white md:h-9 md:w-28 md:ml-10 hidden md:block"
-          >
-            Profile details
-          </button>
-          <button
-            class="rounded-md px-3 py-2 m-2 text-sm font-medium text-gray-800 hover:bg-gray-600 hover:text-white md:h-9 md:w-28 md:ml-10 hidden md:block"
-          >
-            Work details
-          </button>
-          <button
-            class="rounded-md px-3 py-2 m-2 text-sm font-medium text-gray-800 hover:bg-gray-600 hover:text-white md:h-9 md:w-28 md:ml-10 hidden md:block"
-          >
-            Password
-          </button>
-          <button
-            class="rounded-md px-3 py-2 m-2 text-sm font-medium text-gray-800 hover:bg-gray-600 hover:text-white md:h-9 md:w-28 md:ml-10 hidden md:block"
-          >
-            Delete
-          </button>
+        <!-- settings dropdown md -->
+        <div class="w-auto hidden" id="settingsDropdownmd">
+          <div class="flex flex-col items-end">
+            <button
+              class="rounded-md py-2 text-sm font-medium bg-gray-700 hover:bg-gray-600 text-white md:h-9 md:w-28 hidden md:block"
+            >
+              Profile details
+            </button>
+            <button
+              class="rounded-md py-2 text-sm font-medium text-gray-800 hover:bg-gray-600 hover:text-white md:h-9 md:w-28 hidden md:block"
+            >
+              Work details
+            </button>
+            <button
+              class="rounded-md py-2 text-sm font-medium text-gray-800 hover:bg-gray-600 hover:text-white md:h-9 md:w-28 hidden md:block"
+            >
+              Password
+            </button>
+            <button
+              class="rounded-md py-2 text-sm font-medium text-gray-800 hover:bg-gray-600 hover:text-white md:h-9 md:w-28 hidden md:block"
+            >
+              Delete
+            </button>
+          </div>
         </div>
       </div>
       <div
