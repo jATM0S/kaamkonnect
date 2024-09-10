@@ -257,12 +257,12 @@
         <div class="w-auto pt-1" id="dashboardDropdownmd">
           <div class="flex flex-col items-end space-y-1">
             <button
-              class="rounded-md py-2 text-sm font-medium bg-gray-700 hover:bg-gray-600 text-white md:h-9 md:w-28 hidden md:block"
+              class="rounded-md py-2 text-sm font-medium text-gray-800 hover:bg-gray-600 hover:text-white md:h-9 md:w-28 hidden md:block"
             >
               Work
             </button>
             <button
-              class="rounded-md py-2 text-sm font-medium text-gray-800 hover:bg-gray-600 hover:text-white md:h-9 md:w-28 hidden md:block"
+              class="rounded-md py-2 text-sm font-medium bg-gray-700 hover:bg-gray-600 text-white md:h-9 md:w-28 hidden md:block"
             >
               Reviews
             </button>
@@ -352,252 +352,166 @@
       </div>
       <!-- mainconent -->
       <div
-        class="bg-[url('../../public/subtlebg.png')] w-full flex flex-row flex-wrap p-6 justify-evenly"
+        class="bg-[url('../../public/subtlebg.png')] w-full flex flex-col p-4 space-y-4"
       >
         <div
-          class="flex flex-col items-center m-2 w-96 h-96 p-3 border border-slate-950 overflow-hidden"
+          class="flex flex-col md:flex-row justify-between md:flex-wrap md:justify-evenly items-center md:items-start border border-black p-4 rounded-xl space-y-4 md:space-y-0"
         >
-          <div class="border border-black w-96 h-40 mb-2 overflow-hidden">
+          <!-- image -->
+          <div
+            class="flex-shrink-0 w-32 h-32 md:w-36 md:h-36 border border-black rounded-xl overflow-hidden"
+          >
             <img
               src="../../public/KK logo.png"
-              class="w-full h-full object-cover"
-              alt=""
+              alt="review img"
+              class="object-cover w-full h-full"
             />
           </div>
+          <!-- person who reviews -->
           <div
-            class="overflow-hidden h-9 w-40 flex justify-center align-middle"
+            class="flex flex-col justify-center w-full md:w-auto md:max-w-56 rounded-xl py-4 px-1 text-center md:text-left"
           >
-            <p
-              class="text-xl text-ellipsis font-semibold whitespace-nowrap overflow-hidden"
-            >
-              Plumbing
+            <p class="font-medium line-clamp-1 text-center">Worker</p>
+            <p class="line-clamp-3 text-center">
+              Name somethinsfdss somdfidmdss
             </p>
           </div>
-          <div class="flex align-top justify-center">
-            <p class="text-lg overflow-hidden text-ellipsis whitespace-nowrap">
-              Plumber
-            </p>
-          </div>
-          <div class="flex align-top justify-center">
-            <p class="text-lg overflow-hidden text-ellipsis whitespace-nowrap">
-              Skill: advanced
-            </p>
-          </div>
-          <div class="flex align-top justify-center">
-            <p
-              class="text-lg font-semibold overflow-hidden text-ellipsis whitespace-nowrap"
-            >
-              Description
-            </p>
-          </div>
-          <div class="flex align-top justify-center">
-            <p class="text-sm line-clamp-4 text-center">
-              Lorem, ipsum dolor sit someothing something something
-              asoidjfoasijd foiasjfopiasjd foijsadofijasoidfjsd something
-              something something something something
-            </p>
-          </div>
-          <button
-            class="mt-4 h-8 w-24 border border-black bg-green-800 text-fuchsia-50 rounded-full"
+          <!-- review details -->
+          <div
+            class="flex flex-col justify-center w-full md:w-auto md:max-w-xl rounded-xl p-4 text-center md:text-left"
           >
-            Apply
-          </button>
+            <p class="font-medium line-clamp-1 text-center">Worker title</p>
+            <p class="line-clamp-3">
+              Name did something something something nicenicenicenicesodmfoesm
+              Lorem ipsum dolor sit amet Lorem ipsum dolor, sit amet consectetur
+              adipisicing elit. Possimus quam natus debitis iure incidunt
+              inventore mollitia eius soluta reprehenderit perferendis facere
+              voluptatibus error, officia placeat. Molestias quidem totam
+              excepturi cumque! Lorem ipsum dolor sit amet consectetur
+              adipisicing elit. Repellat quasi sed optio reprehenderit, libero
+              exercitationem, aperiam, eveniet architecto nobis aliquid at
+              aspernatur est ipsa. Dolorem vero maxime harum. Asperiores, sequi.
+            </p>
+          </div>
+          <!-- options -->
+          <div class="flex flex-col justify-center space-y-2">
+            <button
+              class="h-10 w-24 border border-black bg-green-800 text-fuchsia-50 rounded-full"
+            >
+              Apply
+            </button>
+            <button
+              class="h-10 w-24 border border-black bg-red-700 text-fuchsia-50 rounded-full"
+            >
+              Delete
+            </button>
+          </div>
         </div>
         <div
-          class="flex flex-col items-center m-2 w-96 h-96 p-3 border border-slate-950 overflow-hidden"
+          class="flex flex-col md:flex-row justify-between md:flex-wrap md:justify-evenly items-center md:items-start border border-black p-4 rounded-xl space-y-4 md:space-y-0"
         >
-          <div class="border border-black w-96 h-40 mb-2 overflow-hidden">
+          <!-- image -->
+          <div
+            class="flex-shrink-0 w-32 h-32 md:w-36 md:h-36 border border-black rounded-xl overflow-hidden"
+          >
             <img
               src="../../public/KK logo.png"
-              class="w-full h-full object-cover"
-              alt=""
+              alt="review img"
+              class="object-cover w-full h-full"
             />
           </div>
+          <!-- person who reviews -->
           <div
-            class="overflow-hidden h-9 w-40 flex justify-center align-middle"
+            class="flex flex-col justify-center w-full md:w-auto md:max-w-56 rounded-xl py-4 px-1 text-center md:text-left"
           >
-            <p
-              class="text-xl text-ellipsis font-semibold whitespace-nowrap overflow-hidden"
-            >
-              Plumbing
+            <p class="font-medium line-clamp-1 text-center">Worker</p>
+            <p class="line-clamp-3 text-center">
+              Name somethinsfdss somdfidmdss
             </p>
           </div>
-          <div class="flex align-top justify-center">
-            <p class="text-lg overflow-hidden text-ellipsis whitespace-nowrap">
-              Plumber
-            </p>
-          </div>
-          <div class="flex align-top justify-center">
-            <p class="text-lg overflow-hidden text-ellipsis whitespace-nowrap">
-              Skill: advanced
-            </p>
-          </div>
-          <div class="flex align-top justify-center">
-            <p
-              class="text-lg font-semibold overflow-hidden text-ellipsis whitespace-nowrap"
-            >
-              Description
-            </p>
-          </div>
-          <div class="flex align-top justify-center">
-            <p class="text-sm line-clamp-4 text-center">
-              Lorem, ipsum dolor sit someothing something something
-              asoidjfoasijd foiasjfopiasjd foijsadofijasoidfjsd something
-              something something something something
-            </p>
-          </div>
-          <button
-            class="mt-4 h-8 w-24 border border-black bg-green-800 text-fuchsia-50 rounded-full"
+          <!-- review details -->
+          <div
+            class="flex flex-col justify-center w-full md:w-auto md:max-w-xl rounded-xl p-4 text-center md:text-left"
           >
-            Apply
-          </button>
+            <p class="font-medium line-clamp-1 text-center">Worker title</p>
+            <p class="line-clamp-3">
+              Name did something something something nicenicenicenicesodmfoesm
+              Lorem ipsum dolor sit amet Lorem ipsum dolor, sit amet consectetur
+              adipisicing elit. Possimus quam natus debitis iure incidunt
+              inventore mollitia eius soluta reprehenderit perferendis facere
+              voluptatibus error, officia placeat. Molestias quidem totam
+              excepturi cumque! Lorem ipsum dolor sit amet consectetur
+              adipisicing elit. Repellat quasi sed optio reprehenderit, libero
+              exercitationem, aperiam, eveniet architecto nobis aliquid at
+              aspernatur est ipsa. Dolorem vero maxime harum. Asperiores, sequi.
+            </p>
+          </div>
+          <!-- options -->
+          <div class="flex flex-col justify-center space-y-2">
+            <button
+              class="h-10 w-24 border border-black bg-green-800 text-fuchsia-50 rounded-full"
+            >
+              Apply
+            </button>
+            <button
+              class="h-10 w-24 border border-black bg-red-700 text-fuchsia-50 rounded-full"
+            >
+              Delete
+            </button>
+          </div>
         </div>
         <div
-          class="flex flex-col items-center m-2 w-96 h-96 p-3 border border-slate-950 overflow-hidden"
+          class="flex flex-col md:flex-row justify-between md:flex-wrap md:justify-evenly items-center md:items-start border border-black p-4 rounded-xl space-y-4 md:space-y-0"
         >
-          <div class="border border-black w-96 h-40 mb-2 overflow-hidden">
+          <!-- image -->
+          <div
+            class="flex-shrink-0 w-32 h-32 md:w-36 md:h-36 border border-black rounded-xl overflow-hidden"
+          >
             <img
               src="../../public/KK logo.png"
-              class="w-full h-full object-cover"
-              alt=""
+              alt="review img"
+              class="object-cover w-full h-full"
             />
           </div>
+          <!-- person who reviews -->
           <div
-            class="overflow-hidden h-9 w-40 flex justify-center align-middle"
+            class="flex flex-col justify-center w-full md:w-auto md:max-w-56 rounded-xl py-4 px-1 text-center md:text-left"
           >
-            <p
-              class="text-xl text-ellipsis font-semibold whitespace-nowrap overflow-hidden"
-            >
-              Plumbing
+            <p class="font-medium line-clamp-1 text-center">Worker</p>
+            <p class="line-clamp-3 text-center">
+              Name somethinsfdss somdfidmdss
             </p>
           </div>
-          <div class="flex align-top justify-center">
-            <p class="text-lg overflow-hidden text-ellipsis whitespace-nowrap">
-              Plumber
-            </p>
-          </div>
-          <div class="flex align-top justify-center">
-            <p class="text-lg overflow-hidden text-ellipsis whitespace-nowrap">
-              Skill: advanced
-            </p>
-          </div>
-          <div class="flex align-top justify-center">
-            <p
-              class="text-lg font-semibold overflow-hidden text-ellipsis whitespace-nowrap"
-            >
-              Description
-            </p>
-          </div>
-          <div class="flex align-top justify-center">
-            <p class="text-sm line-clamp-4 text-center">
-              Lorem, ipsum dolor sit someothing something something
-              asoidjfoasijd foiasjfopiasjd foijsadofijasoidfjsd something
-              something something something something
-            </p>
-          </div>
-          <button
-            class="mt-4 h-8 w-24 border border-black bg-green-800 text-fuchsia-50 rounded-full"
-          >
-            Apply
-          </button>
-        </div>
-        <div
-          class="flex flex-col items-center m-2 w-96 h-96 p-3 border border-slate-950 overflow-hidden"
-        >
-          <div class="border border-black w-96 h-40 mb-2 overflow-hidden">
-            <img
-              src="../../public/KK logo.png"
-              class="w-full h-full object-cover"
-              alt=""
-            />
-          </div>
+          <!-- review details -->
           <div
-            class="overflow-hidden h-9 w-40 flex justify-center align-middle"
+            class="flex flex-col justify-center w-full md:w-auto md:max-w-xl rounded-xl p-4 text-center md:text-left"
           >
-            <p
-              class="text-xl text-ellipsis font-semibold whitespace-nowrap overflow-hidden"
+            <p class="font-medium line-clamp-1 text-center">Worker title</p>
+            <p class="line-clamp-3">
+              Name did something something something nicenicenicenicesodmfoesm
+              Lorem ipsum dolor sit amet Lorem ipsum dolor, sit amet consectetur
+              adipisicing elit. Possimus quam natus debitis iure incidunt
+              inventore mollitia eius soluta reprehenderit perferendis facere
+              voluptatibus error, officia placeat. Molestias quidem totam
+              excepturi cumque! Lorem ipsum dolor sit amet consectetur
+              adipisicing elit. Repellat quasi sed optio reprehenderit, libero
+              exercitationem, aperiam, eveniet architecto nobis aliquid at
+              aspernatur est ipsa. Dolorem vero maxime harum. Asperiores, sequi.
+            </p>
+          </div>
+          <!-- options -->
+          <div class="flex flex-col justify-center space-y-2">
+            <button
+              class="h-10 w-24 border border-black bg-green-800 text-fuchsia-50 rounded-full"
             >
-              Plumbing
-            </p>
-          </div>
-          <div class="flex align-top justify-center">
-            <p class="text-lg overflow-hidden text-ellipsis whitespace-nowrap">
-              Plumber
-            </p>
-          </div>
-          <div class="flex align-top justify-center">
-            <p class="text-lg overflow-hidden text-ellipsis whitespace-nowrap">
-              Skill: advanced
-            </p>
-          </div>
-          <div class="flex align-top justify-center">
-            <p
-              class="text-lg font-semibold overflow-hidden text-ellipsis whitespace-nowrap"
+              Apply
+            </button>
+            <button
+              class="h-10 w-24 border border-black bg-red-700 text-fuchsia-50 rounded-full"
             >
-              Description
-            </p>
+              Delete
+            </button>
           </div>
-          <div class="flex align-top justify-center">
-            <p class="text-sm line-clamp-4 text-center">
-              Lorem, ipsum dolor sit someothing something something
-              asoidjfoasijd foiasjfopiasjd foijsadofijasoidfjsd something
-              something something something something
-            </p>
-          </div>
-          <button
-            class="mt-4 h-8 w-24 border border-black bg-green-800 text-fuchsia-50 rounded-full"
-          >
-            Apply
-          </button>
-        </div>
-        <div
-          class="flex flex-col items-center m-2 w-96 h-96 p-3 border border-slate-950 overflow-hidden"
-        >
-          <div class="border border-black w-96 h-40 mb-2 overflow-hidden">
-            <img
-              src="../../public/KK logo.png"
-              class="w-full h-full object-cover"
-              alt=""
-            />
-          </div>
-          <div
-            class="overflow-hidden h-9 w-40 flex justify-center align-middle"
-          >
-            <p
-              class="text-xl text-ellipsis font-semibold whitespace-nowrap overflow-hidden"
-            >
-              Plumbing
-            </p>
-          </div>
-          <div class="flex align-top justify-center">
-            <p class="text-lg overflow-hidden text-ellipsis whitespace-nowrap">
-              Plumber
-            </p>
-          </div>
-          <div class="flex align-top justify-center">
-            <p class="text-lg overflow-hidden text-ellipsis whitespace-nowrap">
-              Skill: advanced
-            </p>
-          </div>
-          <div class="flex align-top justify-center">
-            <p
-              class="text-lg font-semibold overflow-hidden text-ellipsis whitespace-nowrap"
-            >
-              Description
-            </p>
-          </div>
-          <div class="flex align-top justify-center">
-            <p class="text-sm line-clamp-4 text-center">
-              Lorem, ipsum dolor sit someothing something something
-              asoidjfoasijd foiasjfopiasjd foijsadofijasoidfjsd something
-              something something something something
-            </p>
-          </div>
-          <button
-            class="mt-4 h-8 w-24 border border-black bg-green-800 text-fuchsia-50 rounded-full"
-          >
-            Apply
-          </button>
         </div>
       </div>
     </div>
