@@ -13,7 +13,6 @@ function toggleDashboardDropdown() {
     dashboardDropdownsm.classList.toggle("hidden");
   } else dashboardDropdownmd.classList.toggle("hidden");
 }
-
 function toggleProfiledropdown() {
   const profileDropdown = document.getElementById("profileDropdown");
   profileDropdown.classList.toggle("hidden");
@@ -26,5 +25,11 @@ function toggleNavMenu() {
     const closeIcon = document.getElementById("menu-close-icon");
     openIcon.classList.toggle("hidden");
     closeIcon.classList.toggle("hidden");
+  }
+}
+function toggleFilter() {
+  const filterDropdown = document.getElementById("filterDropdown");
+  if (window.innerWidth < 768) {
+    filterDropdown.classList.toggle("hidden");
   }
 }

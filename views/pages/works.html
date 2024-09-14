@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="../../public/dropDown.js"></script>
     <link rel="stylesheet" href="../../public/output.css" />
     <title>Document</title>
   </head>
@@ -16,6 +17,7 @@
               type="button"
               class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-800 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
               aria-controls="mobile-menu"
+              onclick="toggleNavMenu()"
               aria-expanded="false"
             >
               <span class="absolute -inset-0.5"></span>
@@ -27,6 +29,7 @@
               -->
               <svg
                 class="block h-6 w-6"
+                id="menu-close-icon"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
@@ -46,6 +49,7 @@
               -->
               <svg
                 class="hidden h-6 w-6"
+                id="menu-open-icon"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
@@ -60,6 +64,7 @@
               </svg>
             </button>
           </div>
+          <!-- navigation and company logo -->
           <div
             class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start"
           >
@@ -75,7 +80,7 @@
                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                 <a
                   href="#"
-                  class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white"
+                  class="rounded-md px-3 py-2 text-sm font-medium text-gray-800 hover:bg-gray-700 hover:text-white"
                   aria-current="page"
                   >Home</a
                 >
@@ -105,13 +110,12 @@
               <div>
                 <button
                   type="button"
+                  onclick="toggleProfiledropdown()"
                   class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                   id="user-menu-button"
                   aria-expanded="false"
                   aria-haspopup="true"
                 >
-                  <span class="absolute -inset-1.5"></span>
-                  <span class="sr-only">Open user menu</span>
                   <img
                     class="h-8 w-8 rounded-full"
                     src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
@@ -131,14 +135,15 @@
                   To: "transform opacity-0 scale-95"
               -->
               <div
-                class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                class="hidden absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                id="profileDropdown"
                 role="menu"
                 aria-orientation="vertical"
                 aria-labelledby="user-menu-button"
                 tabindex="-1"
               >
                 <!-- Active: "bg-gray-100", Not Active: "" -->
-                <!-- <a
+                <a
                   href="#"
                   class="block px-4 py-2 text-sm text-gray-700"
                   role="menuitem"
@@ -161,7 +166,7 @@
                   tabindex="-1"
                   id="user-menu-item-2"
                   >Sign out</a
-                > -->
+                >
               </div>
             </div>
           </div>
@@ -169,7 +174,7 @@
       </div>
 
       <!-- Mobile menu, show/hide based on menu state. -->
-      <div class="sm:hidden" id="mobile-menu">
+      <div class="hidden" id="dropdownNav">
         <div class="space-y-1 px-2 pb-3 pt-2">
           <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
           <a
@@ -196,244 +201,253 @@
         </div>
       </div>
     </nav>
-    <!--carousel-->
 
-    <!--Cardsssss-->
-    <div class="flex flex-row flex-wrap p-6 justify-evenly">
-      <div
-        class="flex flex-col items-center m-2 w-96 h-96 p-3 border border-slate-950 overflow-hidden"
-      >
-        <div class="border border-black w-96 h-40 mb-2 overflow-hidden">
-          <img
-            src="../../public/KK logo.png"
-            class="w-full h-full object-cover"
-            alt=""
-          />
-        </div>
-        <div class="overflow-hidden h-9 w-40 flex justify-center align-middle">
-          <p
-            class="text-xl text-ellipsis font-semibold whitespace-nowrap overflow-hidden"
-          >
-            Plumbing
-          </p>
-        </div>
-        <div class="flex align-top justify-center">
-          <p class="text-lg overflow-hidden text-ellipsis whitespace-nowrap">
-            Plumber
-          </p>
-        </div>
-        <div class="flex align-top justify-center">
-          <p class="text-lg overflow-hidden text-ellipsis whitespace-nowrap">
-            Skill: advanced
-          </p>
-        </div>
-        <div class="flex align-top justify-center">
-          <p
-            class="text-lg font-semibold overflow-hidden text-ellipsis whitespace-nowrap"
-          >
-            Description
-          </p>
-        </div>
-        <div class="flex align-top justify-center">
-          <p class="text-sm line-clamp-4 text-center">
-            Lorem, ipsum dolor sit someothing something something asoidjfoasijd
-            foiasjfopiasjd foijsadofijasoidfjsd something something something
-            something something
-          </p>
-        </div>
+    <div class="flex flex-col md:flex-row md:justify-between">
+      <!--Sidebar-->
+      <div class="flex flex-col space-y-4 md:w-64 md:border-r-2 p-4 border-b-2">
         <button
-          class="mt-4 h-8 w-24 border border-black bg-green-800 text-fuchsia-50 rounded-full"
+          class="text-xl flex justify-center items-center w-full p-2 rounded-lg bg-gray-700 text-gray-200 hover:bg-slate-600"
+          onclick="toggleFilter()"
         >
-          Apply
+          <span>Filters</span>
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="h-6 w-6 md:hidden"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M19 9l-7 7-7-7"
+            />
+          </svg>
         </button>
+        <div class="md:block" id="filterDropdown">
+          <!-- Rating Filter -->
+          <div class="mb-4">
+            <div class="font-semibold mb-2">Rating</div>
+            <div class="space-y-2 flex flex-col">
+              <form>
+                <input type="radio" />
+                <label class="ml-2 text-sm">⭐⭐⭐⭐⭐</label>
+                <br />
+                <input type="radio" />
+                <label class="ml-2 text-sm">⭐⭐⭐⭐ & up</label>
+                <br />
+                <input type="radio" />
+                <label class="ml-2 text-sm">⭐⭐⭐ & up</label><br />
+                <input type="radio" />
+                <label class="ml-2 text-sm">⭐⭐ & up</label><br />
+                <input type="radio" />
+                <label class="ml-2 text-sm">⭐ & up</label>
+              </form>
+            </div>
+          </div>
+
+          <!-- Price Range Filter -->
+          <div class="mb-4">
+            <div class="font-semibold mb-2">Price Range</div>
+            <div class="flex items-center space-x-2">
+              <div class="flex-1">
+                <label for="minPrice" class="block font-medium text-gray-700"
+                  >Min</label
+                >
+                <input
+                  type="number"
+                  name="minPrice"
+                  id="minPrice"
+                  class="block w-full border border-gray-700 rounded-md"
+                  placeholder="0"
+                  min="0"
+                />
+              </div>
+              <div class="flex-1">
+                <label for="maxPrice" class="block font-medium text-gray-700"
+                  >Max</label
+                >
+                <input
+                  type="number"
+                  name="maxPrice"
+                  id="maxPrice"
+                  class="block w-full border border-gray-700 rounded-md"
+                  placeholder="1000"
+                  min="0"
+                />
+              </div>
+            </div>
+          </div>
+
+          <!-- Sort Options -->
+          <div class="mb-4">
+            <h3 class="font-semibold mb-2">Sort By</h3>
+            <select class="w-full p-2 border rounded border-gray-700">
+              <option>Low to High</option>
+              <option>High to Low</option>
+            </select>
+          </div>
+
+          <!-- Apply Filters Button -->
+          <button
+            class="bg-gray-700 text-white py-2 px-4 rounded hover:bg-gray-600"
+          >
+            Apply Filters
+          </button>
+        </div>
       </div>
+
+      <!-- mainconent -->
       <div
-        class="flex flex-col items-center m-2 w-96 h-96 p-3 border border-slate-950 overflow-hidden"
+        class="bg-[url('../../public/subtlebg.png')] w-full flex flex-row flex-wrap p-6 justify-evenly"
       >
-        <div class="border border-black w-96 h-40 mb-2 overflow-hidden">
-          <img
-            src="../../public/KK logo.png"
-            class="w-full h-full object-cover"
-            alt=""
-          />
-        </div>
-        <div class="overflow-hidden h-9 w-40 flex justify-center align-middle">
-          <p
-            class="text-xl text-ellipsis font-semibold whitespace-nowrap overflow-hidden"
-          >
-            Plumbing
-          </p>
-        </div>
-        <div class="flex align-top justify-center">
-          <p class="text-lg overflow-hidden text-ellipsis whitespace-nowrap">
-            Plumber
-          </p>
-        </div>
-        <div class="flex align-top justify-center">
-          <p class="text-lg overflow-hidden text-ellipsis whitespace-nowrap">
-            Skill: advanced
-          </p>
-        </div>
-        <div class="flex align-top justify-center">
-          <p
-            class="text-lg font-semibold overflow-hidden text-ellipsis whitespace-nowrap"
-          >
-            Description
-          </p>
-        </div>
-        <div class="flex align-top justify-center">
-          <p class="text-sm line-clamp-4 text-center">
-            Lorem, ipsum dolor sit someothing something something asoidjfoasijd
-            foiasjfopiasjd foijsadofijasoidfjsd something something something
-            something something
-          </p>
-        </div>
-        <button
-          class="mt-4 h-8 w-24 border border-black bg-green-800 text-fuchsia-50 rounded-full"
+        <div
+          class="flex flex-col items-center m-2 w-96 h-96 p-3 border border-slate-950 overflow-hidden"
         >
-          Apply
-        </button>
-      </div>
-      <div
-        class="flex flex-col items-center m-2 w-96 h-96 p-3 border border-slate-950 overflow-hidden"
-      >
-        <div class="border border-black w-96 h-40 mb-2 overflow-hidden">
-          <img
-            src="../../public/KK logo.png"
-            class="w-full h-full object-cover"
-            alt=""
-          />
-        </div>
-        <div class="overflow-hidden h-9 w-40 flex justify-center align-middle">
-          <p
-            class="text-xl text-ellipsis font-semibold whitespace-nowrap overflow-hidden"
+          <div class="border border-black w-96 h-40 mb-2 overflow-hidden">
+            <img
+              src="../../public/KK logo.png"
+              class="w-full h-full object-cover"
+              alt=""
+            />
+          </div>
+          <div
+            class="overflow-hidden h-9 w-40 flex justify-center align-middle"
           >
-            Plumbing
-          </p>
-        </div>
-        <div class="flex align-top justify-center">
-          <p class="text-lg overflow-hidden text-ellipsis whitespace-nowrap">
-            Plumber
-          </p>
-        </div>
-        <div class="flex align-top justify-center">
-          <p class="text-lg overflow-hidden text-ellipsis whitespace-nowrap">
-            Skill: advanced
-          </p>
-        </div>
-        <div class="flex align-top justify-center">
-          <p
-            class="text-lg font-semibold overflow-hidden text-ellipsis whitespace-nowrap"
+            <p
+              class="text-xl text-ellipsis font-semibold whitespace-nowrap overflow-hidden"
+            >
+              Plumbing
+            </p>
+          </div>
+          <div class="flex align-top justify-center">
+            <p class="text-lg overflow-hidden text-ellipsis whitespace-nowrap">
+              Plumber
+            </p>
+          </div>
+          <div class="flex align-top justify-center">
+            <p class="text-lg overflow-hidden text-ellipsis whitespace-nowrap">
+              Skill: advanced
+            </p>
+          </div>
+          <div class="flex align-top justify-center">
+            <p
+              class="text-lg font-semibold overflow-hidden text-ellipsis whitespace-nowrap"
+            >
+              Description
+            </p>
+          </div>
+          <div class="flex align-top justify-center">
+            <p class="text-sm line-clamp-4 text-center">
+              Lorem, ipsum dolor sit someothing something something
+              asoidjfoasijd foiasjfopiasjd foijsadofijasoidfjsd something
+              something something something something
+            </p>
+          </div>
+          <button
+            class="mt-4 h-8 w-24 border border-black bg-green-800 text-fuchsia-50 rounded-full"
           >
-            Description
-          </p>
+            Apply
+          </button>
         </div>
-        <div class="flex align-top justify-center">
-          <p class="text-sm line-clamp-4 text-center">
-            Lorem, ipsum dolor sit someothing something something asoidjfoasijd
-            foiasjfopiasjd foijsadofijasoidfjsd something something something
-            something something
-          </p>
-        </div>
-        <button
-          class="mt-4 h-8 w-24 border border-black bg-green-800 text-fuchsia-50 rounded-full"
+        <div
+          class="flex flex-col items-center m-2 w-96 h-96 p-3 border border-slate-950 overflow-hidden"
         >
-          Apply
-        </button>
-      </div>
-      <div
-        class="flex flex-col items-center m-2 w-96 h-96 p-3 border border-slate-950 overflow-hidden"
-      >
-        <div class="border border-black w-96 h-40 mb-2 overflow-hidden">
-          <img
-            src="../../public/KK logo.png"
-            class="w-full h-full object-cover"
-            alt=""
-          />
-        </div>
-        <div class="overflow-hidden h-9 w-40 flex justify-center align-middle">
-          <p
-            class="text-xl text-ellipsis font-semibold whitespace-nowrap overflow-hidden"
+          <div class="border border-black w-96 h-40 mb-2 overflow-hidden">
+            <img
+              src="../../public/KK logo.png"
+              class="w-full h-full object-cover"
+              alt=""
+            />
+          </div>
+          <div
+            class="overflow-hidden h-9 w-40 flex justify-center align-middle"
           >
-            Plumbing
-          </p>
-        </div>
-        <div class="flex align-top justify-center">
-          <p class="text-lg overflow-hidden text-ellipsis whitespace-nowrap">
-            Plumber
-          </p>
-        </div>
-        <div class="flex align-top justify-center">
-          <p class="text-lg overflow-hidden text-ellipsis whitespace-nowrap">
-            Skill: advanced
-          </p>
-        </div>
-        <div class="flex align-top justify-center">
-          <p
-            class="text-lg font-semibold overflow-hidden text-ellipsis whitespace-nowrap"
+            <p
+              class="text-xl text-ellipsis font-semibold whitespace-nowrap overflow-hidden"
+            >
+              Plumbing
+            </p>
+          </div>
+          <div class="flex align-top justify-center">
+            <p class="text-lg overflow-hidden text-ellipsis whitespace-nowrap">
+              Plumber
+            </p>
+          </div>
+          <div class="flex align-top justify-center">
+            <p class="text-lg overflow-hidden text-ellipsis whitespace-nowrap">
+              Skill: advanced
+            </p>
+          </div>
+          <div class="flex align-top justify-center">
+            <p
+              class="text-lg font-semibold overflow-hidden text-ellipsis whitespace-nowrap"
+            >
+              Description
+            </p>
+          </div>
+          <div class="flex align-top justify-center">
+            <p class="text-sm line-clamp-4 text-center">
+              Lorem, ipsum dolor sit someothing something something
+              asoidjfoasijd foiasjfopiasjd foijsadofijasoidfjsd something
+              something something something something
+            </p>
+          </div>
+          <button
+            class="mt-4 h-8 w-24 border border-black bg-green-800 text-fuchsia-50 rounded-full"
           >
-            Description
-          </p>
+            Apply
+          </button>
         </div>
-        <div class="flex align-top justify-center">
-          <p class="text-sm line-clamp-4 text-center">
-            Lorem, ipsum dolor sit someothing something something asoidjfoasijd
-            foiasjfopiasjd foijsadofijasoidfjsd something something something
-            something something
-          </p>
-        </div>
-        <button
-          class="mt-4 h-8 w-24 border border-black bg-green-800 text-fuchsia-50 rounded-full"
+        <div
+          class="flex flex-col items-center m-2 w-96 h-96 p-3 border border-slate-950 overflow-hidden"
         >
-          Apply
-        </button>
-      </div>
-      <div
-        class="flex flex-col items-center m-2 w-96 h-96 p-3 border border-slate-950 overflow-hidden"
-      >
-        <div class="border border-black w-96 h-40 mb-2 overflow-hidden">
-          <img
-            src="../../public/KK logo.png"
-            class="w-full h-full object-cover"
-            alt=""
-          />
-        </div>
-        <div class="overflow-hidden h-9 w-40 flex justify-center align-middle">
-          <p
-            class="text-xl text-ellipsis font-semibold whitespace-nowrap overflow-hidden"
+          <div class="border border-black w-96 h-40 mb-2 overflow-hidden">
+            <img
+              src="../../public/KK logo.png"
+              class="w-full h-full object-cover"
+              alt=""
+            />
+          </div>
+          <div
+            class="overflow-hidden h-9 w-40 flex justify-center align-middle"
           >
-            Plumbing
-          </p>
-        </div>
-        <div class="flex align-top justify-center">
-          <p class="text-lg overflow-hidden text-ellipsis whitespace-nowrap">
-            Plumber
-          </p>
-        </div>
-        <div class="flex align-top justify-center">
-          <p class="text-lg overflow-hidden text-ellipsis whitespace-nowrap">
-            Skill: advanced
-          </p>
-        </div>
-        <div class="flex align-top justify-center">
-          <p
-            class="text-lg font-semibold overflow-hidden text-ellipsis whitespace-nowrap"
+            <p
+              class="text-xl text-ellipsis font-semibold whitespace-nowrap overflow-hidden"
+            >
+              Plumbing
+            </p>
+          </div>
+          <div class="flex align-top justify-center">
+            <p class="text-lg overflow-hidden text-ellipsis whitespace-nowrap">
+              Plumber
+            </p>
+          </div>
+          <div class="flex align-top justify-center">
+            <p class="text-lg overflow-hidden text-ellipsis whitespace-nowrap">
+              Skill: advanced
+            </p>
+          </div>
+          <div class="flex align-top justify-center">
+            <p
+              class="text-lg font-semibold overflow-hidden text-ellipsis whitespace-nowrap"
+            >
+              Description
+            </p>
+          </div>
+          <div class="flex align-top justify-center">
+            <p class="text-sm line-clamp-4 text-center">
+              Lorem, ipsum dolor sit someothing something something
+              asoidjfoasijd foiasjfopiasjd foijsadofijasoidfjsd something
+              something something something something
+            </p>
+          </div>
+          <button
+            class="mt-4 h-8 w-24 border border-black bg-green-800 text-fuchsia-50 rounded-full"
           >
-            Description
-          </p>
+            Apply
+          </button>
         </div>
-        <div class="flex align-top justify-center">
-          <p class="text-sm line-clamp-4 text-center">
-            Lorem, ipsum dolor sit someothing something something asoidjfoasijd
-            foiasjfopiasjd foijsadofijasoidfjsd something something something
-            something something
-          </p>
-        </div>
-        <button
-          class="mt-4 h-8 w-24 border border-black bg-green-800 text-fuchsia-50 rounded-full"
-        >
-          Apply
-        </button>
       </div>
     </div>
     <!--FOOTER-->
