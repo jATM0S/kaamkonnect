@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../../public/output.css" />
     <script src="../../public/dropDown.js"></script>
+    <script src="../../public/dropDown.js"></script>
+
     <title>Document</title>
   </head>
   <body>
@@ -17,6 +19,7 @@
               type="button"
               class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-800 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
               aria-controls="mobile-menu"
+              onclick="toggleNavMenu()"
               aria-expanded="false"
             >
               <span class="absolute -inset-0.5"></span>
@@ -28,6 +31,7 @@
               -->
               <svg
                 class="block h-6 w-6"
+                id="menu-close-icon"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
@@ -47,6 +51,7 @@
               -->
               <svg
                 class="hidden h-6 w-6"
+                id="menu-open-icon"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke-width="1.5"
@@ -61,6 +66,7 @@
               </svg>
             </button>
           </div>
+          <!-- navigation and company logo -->
           <div
             class="flex flex-1 items-center justify-center sm:items-stretch sm:justify-start"
           >
@@ -76,7 +82,7 @@
                 <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
                 <a
                   href="#"
-                  class="rounded-md bg-gray-900 px-3 py-2 text-sm font-medium text-white"
+                  class="rounded-md px-3 py-2 text-sm font-medium text-gray-800 hover:bg-gray-700 hover:text-white"
                   aria-current="page"
                   >Home</a
                 >
@@ -106,13 +112,12 @@
               <div>
                 <button
                   type="button"
+                  onclick="toggleProfiledropdown()"
                   class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
                   id="user-menu-button"
                   aria-expanded="false"
                   aria-haspopup="true"
                 >
-                  <span class="absolute -inset-1.5"></span>
-                  <span class="sr-only">Open user menu</span>
                   <img
                     class="h-8 w-8 rounded-full"
                     src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
@@ -132,14 +137,15 @@
                   To: "transform opacity-0 scale-95"
               -->
               <div
-                class="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                class="hidden absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+                id="profileDropdown"
                 role="menu"
                 aria-orientation="vertical"
                 aria-labelledby="user-menu-button"
                 tabindex="-1"
               >
                 <!-- Active: "bg-gray-100", Not Active: "" -->
-                <!-- <a
+                <a
                   href="#"
                   class="block px-4 py-2 text-sm text-gray-700"
                   role="menuitem"
@@ -162,7 +168,7 @@
                   tabindex="-1"
                   id="user-menu-item-2"
                   >Sign out</a
-                > -->
+                >
               </div>
             </div>
           </div>
@@ -170,7 +176,7 @@
       </div>
 
       <!-- Mobile menu, show/hide based on menu state. -->
-      <div class="sm:hidden" id="mobile-menu">
+      <div class="hidden" id="dropdownNav">
         <div class="space-y-1 px-2 pb-3 pt-2">
           <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
           <a
@@ -215,9 +221,9 @@
               <label class="ml-2 text-sm">⭐⭐⭐⭐ & up</label>
               <br />
               <input type="radio" />
-              <label class="ml-2 text-sm">⭐⭐⭐ & up</label><br>
+              <label class="ml-2 text-sm">⭐⭐⭐ & up</label><br />
               <input type="radio" />
-              <label class="ml-2 text-sm">⭐⭐ & up</label><br>
+              <label class="ml-2 text-sm">⭐⭐ & up</label><br />
               <input type="radio" />
               <label class="ml-2 text-sm">⭐ & up</label>
             </form>
@@ -227,16 +233,35 @@
         <!-- Price Range Filter -->
         <div class="mb-4">
           <h3 class="font-semibold mb-2">Price Range</h3>
-          <input
-            type="range"
-            min="0"
-            max="1000"
-            class="w-full"
-            id="priceRange"
-          />
-          <div class="flex justify-between">
-            <span>$0</span>
-            <span>$1000</span>
+          <div class="flex items-center space-x-2">
+            <div class="flex-1">
+              <label
+                for="minPrice"
+                class="block text-sm font-medium text-gray-700"
+                >Min</label
+              >
+              <input
+                type="number"
+                name="minPrice"
+                id="minPrice"
+                class="block w-full sm:text-sm rounded-md border border-gray-700"
+                placeholder="0"
+                min="0"
+              />
+            </div>
+            <div class="flex-1">
+              <label for="maxPrice" class="block font-medium text-gray-700"
+                >Max</label
+              >
+              <input
+                type="number"
+                name="maxPrice"
+                id="maxPrice"
+                class="block w-full border border-gray-700 rounded-md"
+                placeholder="1000"
+                min="0"
+              />
+            </div>
           </div>
         </div>
 
