@@ -27,6 +27,12 @@ function toggleNavMenu() {
     closeIcon.classList.toggle("hidden");
   }
 }
+function toggleSearchDropdown() {
+  const dropdownSearch = document.getElementById("dropdownSearch");
+  if (window.innerWidth < 640) {
+    dropdownSearch.classList.toggle("hidden");
+  }
+}
 function toggleFilter() {
   const filterDropdown = document.getElementById("filterDropdown");
   if (window.innerWidth < 768) {

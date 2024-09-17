@@ -11,13 +11,13 @@
   </head>
   <body>
     <nav class="border border-black">
-      <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8 border border-black">
+      <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
         <div class="flex h-16 items-center justify-between">
-          <div class="flex items-center md:hidden border border-black">
+          <div class="flex items-center md:hidden">
             <!-- Mobile menu button-->
             <button
               type="button"
-              class="rounded-md p-2 text-gray-800 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+              class="rounded-md p-2 text-gray-800 hover:bg-gray-700 hover:text-white"
               onclick="toggleNavMenu()"
               aria-controls="mobile-menu"
               aria-expanded="false"
@@ -104,7 +104,7 @@
           </div>
           <!-- search bar -->
           <div
-            class="flex w-20 md:min-w-[230px] lg:min-w-[300px] border border-black"
+            class="ml-2 w-10 hidden sm:block sm:min-w-[230px] lg:min-w-[300px] border border-black"
           >
             <input
               type="text"
@@ -112,29 +112,35 @@
               class="w-full p-2 border border-gray-300 rounded-lg shadow-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-600 focus:border-gray-600 transition-all"
             />
           </div>
-          <div
-            class="inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0"
-          >
-            <!-- Profile dropdown -->
-            <div class="ml-3">
-              <div>
-                <button
-                  type="button"
-                  onclick="toggleProfiledropdown()"
-                  class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
-                  id="user-menu-button"
-                  aria-expanded="false"
-                  aria-haspopup="true"
-                >
-                  <img
-                    class="h-8 w-8 rounded-full"
-                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
-                    alt=""
-                  />
-                </button>
-              </div>
+          <!-- searchbutton -->
 
-              <!--
+          <!-- Profile and search dropdown -->
+          <div class="ml-3 flex flex-row items-center">
+            <div
+              class="block sm:hidden mr-9 h-11 w-11 overflow-hidden rounded-xl - hover:border hover:border-black"
+            >
+              <button class="h-11 w-11" onclick="toggleSearchDropdown()">
+                🔍
+              </button>
+            </div>
+            <div>
+              <button
+                type="button"
+                onclick="toggleProfiledropdown()"
+                class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                id="user-menu-button"
+                aria-expanded="false"
+                aria-haspopup="true"
+              >
+                <img
+                  class="h-8 w-8 rounded-full"
+                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                  alt=""
+                />
+              </button>
+            </div>
+
+            <!--
                 Dropdown menu, show/hide based on menu state.
     
                 Entering: "transition ease-out duration-100"
@@ -144,45 +150,53 @@
                   From: "transform opacity-100 scale-100"
                   To: "transform opacity-0 scale-95"
               -->
-              <div
-                class="hidden absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
-                id="profileDropdown"
-                role="menu"
-                aria-orientation="vertical"
-                aria-labelledby="user-menu-button"
+            <div
+              class="hidden absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+              id="profileDropdown"
+              role="menu"
+              aria-orientation="vertical"
+              aria-labelledby="user-menu-button"
+              tabindex="-1"
+            >
+              <!-- Active: "bg-gray-100", Not Active: "" -->
+              <a
+                href="#"
+                class="block px-4 py-2 text-sm text-gray-700"
+                role="menuitem"
                 tabindex="-1"
+                id="user-menu-item-0"
+                >Your Profile</a
               >
-                <!-- Active: "bg-gray-100", Not Active: "" -->
-                <a
-                  href="#"
-                  class="block px-4 py-2 text-sm text-gray-700"
-                  role="menuitem"
-                  tabindex="-1"
-                  id="user-menu-item-0"
-                  >Your Profile</a
-                >
-                <a
-                  href="#"
-                  class="block px-4 py-2 text-sm text-gray-700"
-                  role="menuitem"
-                  tabindex="-1"
-                  id="user-menu-item-1"
-                  >Settings</a
-                >
-                <a
-                  href="#"
-                  class="block px-4 py-2 text-sm text-gray-700"
-                  role="menuitem"
-                  tabindex="-1"
-                  id="user-menu-item-2"
-                  >Sign out</a
-                >
-              </div>
+              <a
+                href="#"
+                class="block px-4 py-2 text-sm text-gray-700"
+                role="menuitem"
+                tabindex="-1"
+                id="user-menu-item-1"
+                >Settings</a
+              >
+              <a
+                href="#"
+                class="block px-4 py-2 text-sm text-gray-700"
+                role="menuitem"
+                tabindex="-1"
+                id="user-menu-item-2"
+                >Sign out</a
+              >
             </div>
           </div>
         </div>
       </div>
-
+      <div class="hidden" id="dropdownSearch">
+        <div class="space-y-1 px-2 pb-3 pt-2">
+          <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+          <input
+            class="block rounded-md px-3 py-2 w-full text-base border border-black"
+            aria-current="page"
+            placeholder="Search Something..."
+          />
+        </div>
+      </div>
       <!-- Mobile menu, show/hide based on menu state. -->
       <div class="hidden" id="dropdownNav">
         <div class="space-y-1 px-2 pb-3 pt-2">
@@ -211,7 +225,6 @@
         </div>
       </div>
     </nav>
-
     <div class="flex flex-col md:flex-row md:justify-between">
       <!--Sidebar-->
       <div class="flex flex-col space-y-4 md:w-64 md:border-r-2 p-4 border-b-2">
