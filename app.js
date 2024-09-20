@@ -16,15 +16,14 @@ app.use(xss());
 //view stuff
 app.set("view engine", "ejs");
 
+const viewRouter = require("./routers/viewRouter");
 app.set("views", path.join(__dirname, "views"));
-app.use(express.static(path.join(__dirname,"public")));
-app.get("/", (req, res) => {
-  res.status(200).render("./pages/base.ejs");
-});
+app.use(express.static(path.join(__dirname, "public")));
+app.use("/", viewRouter);
 
 //backend routes stuff
 const router = require("./routers/routers");
-app.use("/", router);
+app.use("/api", router);
 app.all("*", (req, res, next) => {
   next(new AppError(`Can't find ${req.originalUrl} on this server!`, 404));
 });
