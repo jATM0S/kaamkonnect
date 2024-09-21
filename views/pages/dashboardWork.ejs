@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./output.css" />
+    <script src="./dropDown.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <%- include('../partials/profileNavbar.ejs') %>
+    <div class="flex flex-col md:flex-row md:justify-between">
+      <!--Sidebar-->
+      <div
+        class="flex flex-wrap justify-evenly flex-row border-b-2 md:block md:pt-6 md:h-auto md:min-h-screen-nav md:w-40 md:border-r-2"
+      >
+        <!-- Buttons -->
+        <button
+          class="rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-700 hover:text-white md:h-9 md:w-full md:mt-8"
+        >
+          Profile
+        </button>
+        <button
+          class="rounded-md px-3 py-2 text-sm font-medium hover:bg-gray-700 hover:text-white text-gray-800 md:h-9 md:w-full md:mt-8"
+        >
+          Worker Details
+        </button>
+        <button
+          onclick="toggleDashboardDropdown()"
+          class="rounded-md px-3 py-2 text-sm font-medium text-gray-800 hover:bg-gray-700 hover:text-white md:h-9 md:w-full md:mt-8"
+        >
+          Dashboard
+        </button>
+        <!-- dashboard dropdown sm -->
+        <div
+          id="dashboardDropdownsm"
+          class="hidden border border-black absolute z-10 mt-10 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+          role="menu"
+          aria-orientation="vertical"
+          aria-labelledby="menu-button"
+          tabindex="-1"
+        >
+          <div class="py-1" role="none">
+            <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
+            <a
+              href="#"
+              class="block px-4 py-2 text-sm text-gray-700"
+              role="menuitem"
+              tabindex="-1"
+              id="menu-item-0"
+              >Work</a
+            >
+            <a
+              href="#"
+              class="block px-4 py-2 text-sm text-gray-700"
+              role="menuitem"
+              tabindex="-1"
+              id="menu-item-1"
+              >Review</a
+            >
+          </div>
+        </div>
+        <!-- dashborad dropdown md -->
+        <div class="w-auto pt-1" id="dashboardDropdownmd">
+          <div class="flex flex-col items-end space-y-1">
+            <button
+              class="rounded-md py-2 text-sm font-medium bg-gray-700 hover:bg-gray-600 text-white md:h-9 md:w-28 hidden md:block"
+            >
+              Work
+            </button>
+            <button
+              class="rounded-md py-2 text-sm font-medium text-gray-800 hover:bg-gray-600 hover:text-white md:h-9 md:w-28 hidden md:block"
+            >
+              Reviews
+            </button>
+          </div>
+        </div>
+
+        <button
+          onclick="toggleSettingDropdown()"
+          class="rounded-md px-3 py-2 text-sm font-medium text-gray-800 hover:bg-gray-700 hover:text-white md:h-9 md:w-full md:mt-8"
+        >
+          Settings
+        </button>
+
+        <!-- settings dropdown sm -->
+        <div
+          id="settingsDropdownsm"
+          class="hidden border border-black absolute right-1 z-10 mt-10 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+          role="menu"
+          aria-orientation="vertical"
+          aria-labelledby="menu-button"
+          tabindex="-1"
+        >
+          <div class="py-1" role="none">
+            <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
+            <a
+              href="#"
+              class="block px-4 py-2 text-sm text-gray-700"
+              role="menuitem"
+              tabindex="-1"
+              id="menu-item-0"
+              >Work Change</a
+            >
+            <a
+              href="#"
+              class="block px-4 py-2 text-sm text-gray-700"
+              role="menuitem"
+              tabindex="-1"
+              id="menu-item-1"
+              >Worker Change</a
+            >
+            <a
+              href="#"
+              class="block px-4 py-2 text-sm text-gray-700"
+              role="menuitem"
+              tabindex="-1"
+              id="menu-item-2"
+              >Change Password</a
+            >
+            <form method="POST" action="#" role="none">
+              <button
+                type="submit"
+                class="block w-full px-4 py-2 text-left text-sm text-gray-700"
+                role="menuitem"
+                tabindex="-1"
+                id="menu-item-3"
+              >
+                Delete Account
+              </button>
+            </form>
+          </div>
+        </div>
+        <!-- settings dropdown md -->
+        <div class="hidden w-auto pt-1" id="settingsDropdownmd">
+          <div class="flex flex-col items-end space-y-1">
+            <button
+              class="rounded-md py-2 text-sm font-medium text-gray-800 hover:bg-gray-600 hover:text-white md:h-9 md:w-28 hidden md:block"
+            >
+              Profile change
+            </button>
+            <button
+              class="rounded-md py-2 text-sm font-medium text-gray-800 hover:bg-gray-600 hover:text-white md:h-9 md:w-28 hidden md:block"
+            >
+              Work change
+            </button>
+            <button
+              class="rounded-md py-2 text-sm font-medium text-gray-800 hover:bg-gray-600 hover:text-white md:h-9 md:w-28 hidden md:block"
+            >
+              Password
+            </button>
+            <button
+              class="rounded-md py-2 text-sm font-medium text-gray-800 hover:bg-gray-600 hover:text-white md:h-9 md:w-28 hidden md:block"
+            >
+              Delete account
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- mainconent -->
+      <div
+        class="bg-[url('./subtlebg.png')] w-full flex flex-row flex-wrap p-6 justify-evenly"
+      >
+        <div
+          class="flex flex-col items-center m-2 w-96 h-96 p-3 border border-slate-950 overflow-hidden"
+        >
+          <div class="border border-black w-96 h-40 mb-2 overflow-hidden">
+            <img
+              src="./KK logo.png"
+              class="w-full h-full object-cover"
+              alt=""
+            />
+          </div>
+          <div
+            class="overflow-hidden h-9 w-40 flex justify-center align-middle"
+          >
+            <p
+              class="text-xl text-ellipsis font-semibold whitespace-nowrap overflow-hidden"
+            >
+              Plumbing
+            </p>
+          </div>
+          <div class="flex align-top justify-center">
+            <p class="text-lg overflow-hidden text-ellipsis whitespace-nowrap">
+              Plumber
+            </p>
+          </div>
+          <div class="flex align-top justify-center">
+            <p class="text-lg overflow-hidden text-ellipsis whitespace-nowrap">
+              Skill: advanced
+            </p>
+          </div>
+          <div class="flex align-top justify-center">
+            <p
+              class="text-lg font-semibold overflow-hidden text-ellipsis whitespace-nowrap"
+            >
+              Description
+            </p>
+          </div>
+          <div class="flex align-top justify-center">
+            <p class="text-sm line-clamp-4 text-center">
+              Lorem, ipsum dolor sit someothing something something
+              asoidjfoasijd foiasjfopiasjd foijsadofijasoidfjsd something
+              something something something something
+            </p>
+          </div>
+          <button
+            class="mt-4 h-8 w-24 border border-black bg-green-800 text-fuchsia-50 rounded-full"
+          >
+            Apply
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <%- include('../partials/footer.ejs') %>
+  </body>
+</html>

@@ -733,6 +733,10 @@ video {
   display: block;
 }
 
+.inline-block {
+  display: inline-block;
+}
+
 .flex {
   display: flex;
 }
@@ -863,6 +867,10 @@ video {
 
 .w-full {
   width: 100%;
+}
+
+.min-w-48 {
+  min-width: 12rem;
 }
 
 .max-w-7xl {
@@ -1127,6 +1135,10 @@ video {
   background-image: url('../../public/subtlebg.png');
 }
 
+.bg-\[url\(\'\.\/subtlebg\.png\'\)\] {
+  background-image: url('./subtlebg.png');
+}
+
 .object-cover {
   -o-object-fit: cover;
      object-fit: cover;
@@ -1193,6 +1205,14 @@ video {
   padding-bottom: 2rem;
 }
 
+.pb-10 {
+  padding-bottom: 2.5rem;
+}
+
+.pb-12 {
+  padding-bottom: 3rem;
+}
+
 .pb-2 {
   padding-bottom: 0.5rem;
 }
@@ -1246,16 +1266,6 @@ video {
   line-height: 2.25rem;
 }
 
-.text-8xl {
-  font-size: 6rem;
-  line-height: 1;
-}
-
-.text-9xl {
-  font-size: 8rem;
-  line-height: 1;
-}
-
 .text-\[14px\] {
   font-size: 14px;
 }
@@ -1296,6 +1306,11 @@ video {
   text-transform: uppercase;
 }
 
+.text-black {
+  --tw-text-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-text-opacity));
+}
+
 .text-blue-400 {
   --tw-text-opacity: 1;
   color: rgb(96 165 250 / var(--tw-text-opacity));
@@ -1309,11 +1324,6 @@ video {
 .text-blue-700 {
   --tw-text-opacity: 1;
   color: rgb(29 78 216 / var(--tw-text-opacity));
-}
-
-.text-blue-900 {
-  --tw-text-opacity: 1;
-  color: rgb(30 58 138 / var(--tw-text-opacity));
 }
 
 .text-fuchsia-50 {
@@ -1361,11 +1371,6 @@ video {
   color: rgb(244 114 182 / var(--tw-text-opacity));
 }
 
-.text-red-400 {
-  --tw-text-opacity: 1;
-  color: rgb(248 113 113 / var(--tw-text-opacity));
-}
-
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
@@ -1373,6 +1378,16 @@ video {
 
 .underline {
   text-decoration-line: underline;
+}
+
+.placeholder-black::-moz-placeholder {
+  --tw-placeholder-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-placeholder-opacity));
+}
+
+.placeholder-black::placeholder {
+  --tw-placeholder-opacity: 1;
+  color: rgb(0 0 0 / var(--tw-placeholder-opacity));
 }
 
 .placeholder-gray-500::-moz-placeholder {
@@ -1595,6 +1610,10 @@ video {
     height: 9rem;
   }
 
+  .md\:h-40 {
+    height: 10rem;
+  }
+
   .md\:h-9 {
     height: 2.25rem;
   }
@@ -1605,6 +1624,10 @@ video {
 
   .md\:h-screen-nav {
     height: calc(100vh - 64px);
+  }
+
+  .md\:min-h-screen-nav {
+    min-height: calc(100vh - 64px);
   }
 
   .md\:w-28 {

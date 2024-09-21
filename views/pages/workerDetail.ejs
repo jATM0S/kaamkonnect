@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./output.css" />
+    <script src="./dropDown.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <%- include('../partials/profileNavbar.ejs') %>
+    <div class="flex flex-col md:flex-row md:justify-between">
+      <!--Sidebar-->
+      <div
+        class="flex flex-wrap justify-evenly flex-row border-b-2 md:block md:pt-6 md:h-auto md:w-40 md:border-r-2"
+      >
+        <!-- Buttons -->
+        <button
+          class="rounded-md px-3 py-2 text-sm font-medium text-gray-800 hover:bg-gray-700 hover:text-white md:h-9 md:w-full md:mt-8"
+        >
+          Profile
+        </button>
+        <button
+          class="rounded-md px-3 py-2 text-sm font-medium bg-gray-700 hover:bg-gray-600 text-white md:h-9 md:w-full md:mt-8"
+        >
+          Worker Details
+        </button>
+        <button
+          onclick="toggleDashboardDropdown()"
+          class="rounded-md px-3 py-2 text-sm font-medium text-gray-800 hover:bg-gray-700 hover:text-white md:h-9 md:w-full md:mt-8"
+        >
+          Dashboard
+        </button>
+        <!-- dashboard dropdown sm -->
+        <div
+          id="dashboardDropdownsm"
+          class="hidden border border-black absolute z-10 mt-10 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+          role="menu"
+          aria-orientation="vertical"
+          aria-labelledby="menu-button"
+          tabindex="-1"
+        >
+          <div class="py-1" role="none">
+            <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
+            <a
+              href="#"
+              class="block px-4 py-2 text-sm text-gray-700"
+              role="menuitem"
+              tabindex="-1"
+              id="menu-item-0"
+              >Work</a
+            >
+            <a
+              href="#"
+              class="block px-4 py-2 text-sm text-gray-700"
+              role="menuitem"
+              tabindex="-1"
+              id="menu-item-1"
+              >Review</a
+            >
+          </div>
+        </div>
+        <!-- dashborad dropdown md -->
+        <div class="hidden w-auto pt-1" id="dashboardDropdownmd">
+          <div class="flex flex-col items-end space-y-1">
+            <button
+              class="rounded-md py-2 text-sm font-medium text-gray-800 hover:bg-gray-600 hover:text-white md:h-9 md:w-28 hidden md:block"
+            >
+              Work
+            </button>
+            <button
+              class="rounded-md py-2 text-sm font-medium text-gray-800 hover:bg-gray-600 hover:text-white md:h-9 md:w-28 hidden md:block"
+            >
+              Reviews
+            </button>
+          </div>
+        </div>
+
+        <button
+          onclick="toggleSettingDropdown()"
+          class="rounded-md px-3 py-2 text-sm font-medium text-gray-800 hover:bg-gray-700 hover:text-white md:h-9 md:w-full md:mt-8"
+        >
+          Settings
+        </button>
+
+        <!-- settings dropdown sm -->
+        <div
+          id="settingsDropdownsm"
+          class="hidden border border-black absolute right-1 z-10 mt-10 w-56 origin-top-right rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+          role="menu"
+          aria-orientation="vertical"
+          aria-labelledby="menu-button"
+          tabindex="-1"
+        >
+          <div class="py-1" role="none">
+            <!-- Active: "bg-gray-100 text-gray-900", Not Active: "text-gray-700" -->
+            <a
+              href="#"
+              class="block px-4 py-2 text-sm text-gray-700"
+              role="menuitem"
+              tabindex="-1"
+              id="menu-item-0"
+              >Work Change</a
+            >
+            <a
+              href="#"
+              class="block px-4 py-2 text-sm text-gray-700"
+              role="menuitem"
+              tabindex="-1"
+              id="menu-item-1"
+              >Worker Change</a
+            >
+            <a
+              href="#"
+              class="block px-4 py-2 text-sm text-gray-700"
+              role="menuitem"
+              tabindex="-1"
+              id="menu-item-2"
+              >Change Password</a
+            >
+            <form method="POST" action="#" role="none">
+              <button
+                type="submit"
+                class="block w-full px-4 py-2 text-left text-sm text-gray-700"
+                role="menuitem"
+                tabindex="-1"
+                id="menu-item-3"
+              >
+                Delete Account
+              </button>
+            </form>
+          </div>
+        </div>
+        <!-- settings dropdown md -->
+        <div class="hidden w-auto pt-1" id="settingsDropdownmd">
+          <div class="flex flex-col items-end space-y-1">
+            <button
+              class="rounded-md py-2 text-sm font-medium text-gray-800 hover:bg-gray-600 hover:text-white md:h-9 md:w-28 hidden md:block"
+            >
+              Profile change
+            </button>
+            <button
+              class="rounded-md py-2 text-sm font-medium text-gray-800 hover:bg-gray-600 hover:text-white md:h-9 md:w-28 hidden md:block"
+            >
+              Work change
+            </button>
+            <button
+              class="rounded-md py-2 text-sm font-medium text-gray-800 hover:bg-gray-600 hover:text-white md:h-9 md:w-28 hidden md:block"
+            >
+              Password
+            </button>
+            <button
+              class="rounded-md py-2 text-sm font-medium text-gray-800 hover:bg-gray-600 hover:text-white md:h-9 md:w-28 hidden md:block"
+            >
+              Delete account
+            </button>
+          </div>
+        </div>
+      </div>
+      <!-- worker detail -->
+      <div
+        class="flex flex-col items-center p-4 bg-[url('../../public/subtlebg.png')] md:flex-col md:justify-evenly md:p-4 w-full"
+      >
+        <p class="text-center font-semibold">Worker Details</p>
+        <div class="flex flex-col w-full space-y-3">
+          <div
+            class="flex flex-col items-center md:flex-row md:justify-evenly w-full"
+          >
+            <div class="my-3">
+              <label for="Name">Name:</label>
+              <div
+                class="inline-block min-w-48 border-[1px] border-gray-600 p-2 rounded-lg"
+              >
+                Name
+              </div>
+            </div>
+            <div class="my-3">
+              <label for="Skill">Skill:</label>
+              <div
+                class="inline-block min-w-48 border-[1px] border-gray-600 p-2 rounded-lg"
+              >
+                Big brain
+              </div>
+            </div>
+          </div>
+          <div
+            class="flex flex-col items-center md:flex-row md:justify-evenly w-full"
+          >
+            <div class="my-3">
+              <label for="Rating">Rating:</label>
+              <div
+                class="inline-block min-w-48 border-[1px] border-gray-600 p-2 rounded-lg"
+              >
+                4 stars
+              </div>
+            </div>
+            <div class="my-3">
+              <label for="Level">Skill Level:</label>
+              <div
+                class="inline-block min-w-48 border-[1px] border-gray-600 p-2 rounded-lg"
+              >
+                very very
+              </div>
+            </div>
+          </div>
+          <div class="flex flex-col md:items-center px-5">
+            <div>Description:</div>
+            <div
+              class="inline-block min-w-48 border-[1px] border-gray-600 p-2 rounded-lg"
+            >
+              <p class="p-2 rounded-lg">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. At
+                aspernatur ipsum deleniti quisquam accusamus maiores inventore
+                in veritatis fugiat quaerat dignissimos cum sapiente eligendi
+                fuga tenetur consectetur, adipisci, culpa sit!Lorem Lorem ipsum
+                dolor sit amet consectetur adipisicing elit. Nesciunt dolores
+                molestias quidem praesentium optio eligendi esse aspernatur
+                saepe nisi voluptatem delectus, doloribus, id dicta, ducimus
+                quis necessitatibus magnam perspiciatis voluptas.
+              </p>
+            </div>
+          </div>
+          <div class="flex flex-col md:items-center px-5">
+            <div>Avaivability:</div>
+            <div
+              class="inline-block min-w-48 border-[1px] border-gray-600 p-2 rounded-lg"
+            >
+              <p class="p-2 rounded-lg">
+                times times times times times times time time time time time
+                time time
+              </p>
+            </div>
+          </div>
+          <div
+            class="flex flex-col items-center md:flex-row md:justify-evenly w-full"
+          >
+            <div class="my-3">
+              <label for="Experience">Experience:</label>
+              <div
+                class="inline-block min-w-48 border-[1px] border-gray-600 p-2 rounded-lg"
+              >
+                69 years
+              </div>
+            </div>
+            <div class="my-3">
+              <label for="Price">Price:</label>
+              <div
+                class="inline-block min-w-48 border-[1px] border-gray-600 p-2 rounded-lg"
+              >
+                Price
+              </div>
+            </div>
+          </div>
+          <div
+            class="flex flex-col items-center md:flex-row md:justify-evenly w-full"
+          >
+            <div class="my-3">
+              <label for="Location">Location:</label>
+              <div
+                class="inline-block min-w-48 border-[1px] border-gray-600 p-2 rounded-lg"
+              >
+                Location
+              </div>
+            </div>
+            <div class="my-3">
+              <label for="Email">Email:</label>
+              <div
+                class="inline-block min-w-48 border-[1px] border-gray-600 p-2 rounded-lg"
+              >
+                Email
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%- include('../partials/footer.ejs') %>
+  </body>
+</html>

@@ -1,0 +1,90 @@
+<div class="flex flex-col space-y-4 md:w-64 md:border-r-2 p-4 border-b-2">
+  <button
+    class="text-xl flex justify-center items-center w-full p-2 rounded-lg bg-gray-700 text-gray-200 hover:bg-slate-600"
+    onclick="toggleFilter()"
+  >
+    <span>Filters</span>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="h-6 w-6 md:hidden"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+    >
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        stroke-width="2"
+        d="M19 9l-7 7-7-7"
+      />
+    </svg>
+  </button>
+  <div class="md:block hidden" id="filterDropdown">
+    <!-- Rating Filter -->
+    <div class="mb-4">
+      <div class="font-semibold mb-2 hid">Rating</div>
+      <div class="space-y-2 flex flex-col">
+        <form>
+          <input type="radio" />
+          <label class="ml-2 text-sm">⭐⭐⭐⭐⭐</label>
+          <br />
+          <input type="radio" />
+          <label class="ml-2 text-sm">⭐⭐⭐⭐ & up</label>
+          <br />
+          <input type="radio" />
+          <label class="ml-2 text-sm">⭐⭐⭐ & up</label><br />
+          <input type="radio" />
+          <label class="ml-2 text-sm">⭐⭐ & up</label><br />
+          <input type="radio" />
+          <label class="ml-2 text-sm">⭐ & up</label>
+        </form>
+      </div>
+    </div>
+
+    <!-- Price Range Filter -->
+    <div class="mb-4">
+      <div class="font-semibold mb-2">Price Range</div>
+      <div class="flex items-center space-x-2">
+        <div class="flex-1">
+          <label for="minPrice" class="block font-medium text-gray-700"
+            >Min</label
+          >
+          <input
+            type="number"
+            name="minPrice"
+            id="minPrice"
+            class="block w-full border border-gray-700 rounded-md"
+            placeholder="0"
+            min="0"
+          />
+        </div>
+        <div class="flex-1">
+          <label for="maxPrice" class="block font-medium text-gray-700"
+            >Max</label
+          >
+          <input
+            type="number"
+            name="maxPrice"
+            id="maxPrice"
+            class="block w-full border border-gray-700 rounded-md"
+            placeholder="1000"
+            min="0"
+          />
+        </div>
+      </div>
+    </div>
+
+    <!-- Sort Options -->
+    <div class="mb-4">
+      <h3 class="font-semibold mb-2">Sort By</h3>
+      <select class="w-full p-2 border rounded border-gray-700">
+        <option>Low to High</option>
+        <option>High to Low</option>
+      </select>
+    </div>
+
+    <!-- Apply Filters Button -->
+    <button class="bg-gray-700 text-white py-2 px-4 rounded hover:bg-gray-600">
+      Apply Filters
+    </button>
+  </div>
+</div>
