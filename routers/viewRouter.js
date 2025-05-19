@@ -10,4 +10,6 @@ viewRouter.get("/settingProfile", viewController.settingProfile);
 viewRouter.get("/settingWorker", viewController.settingWorker);
 viewRouter.get("/settingPassword", viewController.settingPassword);
 viewRouter.get("/settingDelete", viewController.settingDelete);
+viewRouter.get("/workers", viewController.workers);
+viewRouter.get("/works", viewController.works);
 module.exports = viewRouter;

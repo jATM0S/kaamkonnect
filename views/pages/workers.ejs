@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../../public/output.css" />
-    <script src="../../public/dropDown.js"></script>
-    <script src="../../public/dropDown.js"></script>
+    <link rel="stylesheet" href="./output.css" />
+    <script src="./dropDown.js"></script>
+    <script src="./dropDown.js"></script>
 
     <title>Document</title>
   </head>
@@ -223,102 +223,11 @@
     </nav>
     <div class="flex flex-col md:flex-row md:justify-between">
       <!--Sidebar-->
-      <div class="flex flex-col space-y-4 md:w-64 md:border-r-2 p-4 border-b-2">
-        <button
-          class="text-xl flex justify-center items-center w-full p-2 rounded-lg bg-gray-700 text-gray-200 hover:bg-slate-600"
-          onclick="toggleFilter()"
-        >
-          <span>Filters</span>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6 md:hidden"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M19 9l-7 7-7-7"
-            />
-          </svg>
-        </button>
-        <div class="md:block hidden" id="filterDropdown">
-          <!-- Rating Filter -->
-          <div class="mb-4">
-            <div class="font-semibold mb-2 hid">Rating</div>
-            <div class="space-y-2 flex flex-col">
-              <form>
-                <input type="radio" />
-                <label class="ml-2 text-sm">⭐⭐⭐⭐⭐</label>
-                <br />
-                <input type="radio" />
-                <label class="ml-2 text-sm">⭐⭐⭐⭐ & up</label>
-                <br />
-                <input type="radio" />
-                <label class="ml-2 text-sm">⭐⭐⭐ & up</label><br />
-                <input type="radio" />
-                <label class="ml-2 text-sm">⭐⭐ & up</label><br />
-                <input type="radio" />
-                <label class="ml-2 text-sm">⭐ & up</label>
-              </form>
-            </div>
-          </div>
-
-          <!-- Price Range Filter -->
-          <div class="mb-4">
-            <div class="font-semibold mb-2">Price Range</div>
-            <div class="flex items-center space-x-2">
-              <div class="flex-1">
-                <label for="minPrice" class="block font-medium text-gray-700"
-                  >Min</label
-                >
-                <input
-                  type="number"
-                  name="minPrice"
-                  id="minPrice"
-                  class="block w-full border border-gray-700 rounded-md"
-                  placeholder="0"
-                  min="0"
-                />
-              </div>
-              <div class="flex-1">
-                <label for="maxPrice" class="block font-medium text-gray-700"
-                  >Max</label
-                >
-                <input
-                  type="number"
-                  name="maxPrice"
-                  id="maxPrice"
-                  class="block w-full border border-gray-700 rounded-md"
-                  placeholder="1000"
-                  min="0"
-                />
-              </div>
-            </div>
-          </div>
-
-          <!-- Sort Options -->
-          <div class="mb-4">
-            <h3 class="font-semibold mb-2">Sort By</h3>
-            <select class="w-full p-2 border rounded border-gray-700">
-              <option>Low to High</option>
-              <option>High to Low</option>
-            </select>
-          </div>
-
-          <!-- Apply Filters Button -->
-          <button
-            class="bg-gray-700 text-white py-2 px-4 rounded hover:bg-gray-600"
-          >
-            Apply Filters
-          </button>
-        </div>
-      </div>
+      <%- include('../partials/filter.ejs') %>
 
       <!-- mainconent -->
       <div
-        class="bg-[url('../../public/subtlebg.png')] w-full flex flex-row flex-wrap p-6 justify-evenly"
+        class="bg-[url('./subtlebg.png')] w-full flex flex-row flex-wrap p-6 justify-evenly"
       >
         <div
           class="flex flex-col items-center m-2 w-72 h-96 p-3 border border-slate-950 overflow-hidden"
@@ -327,7 +236,7 @@
             class="border border-black h-24 w-24 rounded-full mt-4 mb-2 overflow-hidden"
           >
             <img
-              src="../../public/KK logo.png"
+              src="./KK logo.png"
               class="w-full h-full object-cover"
               alt=""
             />
@@ -377,7 +286,7 @@
             class="border border-black h-24 w-24 rounded-full mt-4 mb-2 overflow-hidden"
           >
             <img
-              src="../../public/KK logo.png"
+              src="./KK logo.png"
               class="w-full h-full object-cover"
               alt=""
             />
@@ -427,107 +336,7 @@
             class="border border-black h-24 w-24 rounded-full mt-4 mb-2 overflow-hidden"
           >
             <img
-              src="../../public/KK logo.png"
-              class="w-full h-full object-cover"
-              alt=""
-            />
-          </div>
-          <div
-            class="overflow-hidden h-9 w-40 flex justify-center align-middle"
-          >
-            <p
-              class="text-xl text-ellipsis font-semibold whitespace-nowrap overflow-hidden"
-            >
-              goofy
-            </p>
-          </div>
-          <div class="flex align-top justify-center">
-            <p class="text-lg overflow-hidden text-ellipsis whitespace-nowrap">
-              Pancake makerlas
-            </p>
-          </div>
-          <div class="flex align-top justify-center">
-            <p class="text-lg overflow-hidden text-ellipsis whitespace-nowrap">
-              Pancake makerlas
-            </p>
-          </div>
-          <div class="flex align-top justify-center">
-            <p
-              class="text-lg font-semibold overflow-hidden text-ellipsis whitespace-nowrap"
-            >
-              Pancake makerlas
-            </p>
-          </div>
-          <div class="flex align-top justify-center">
-            <p class="text-sm line-clamp-3 text-center">
-              Lorem, ipsum dolor sit someothing something something
-              asoidjfoasijd foiasjfopiasjd foijsadofijasoidfjsd
-            </p>
-          </div>
-          <button
-            class="mt-4 h-8 w-24 border border-black bg-green-800 text-fuchsia-50 rounded-full"
-          >
-            Book
-          </button>
-        </div>
-        <div
-          class="flex flex-col items-center m-2 w-72 h-96 p-3 border border-slate-950 overflow-hidden"
-        >
-          <div
-            class="border border-black h-24 w-24 rounded-full mt-4 mb-2 overflow-hidden"
-          >
-            <img
-              src="../../public/KK logo.png"
-              class="w-full h-full object-cover"
-              alt=""
-            />
-          </div>
-          <div
-            class="overflow-hidden h-9 w-40 flex justify-center align-middle"
-          >
-            <p
-              class="text-xl text-ellipsis font-semibold whitespace-nowrap overflow-hidden"
-            >
-              goofy
-            </p>
-          </div>
-          <div class="flex align-top justify-center">
-            <p class="text-lg overflow-hidden text-ellipsis whitespace-nowrap">
-              Pancake makerlas
-            </p>
-          </div>
-          <div class="flex align-top justify-center">
-            <p class="text-lg overflow-hidden text-ellipsis whitespace-nowrap">
-              Pancake makerlas
-            </p>
-          </div>
-          <div class="flex align-top justify-center">
-            <p
-              class="text-lg font-semibold overflow-hidden text-ellipsis whitespace-nowrap"
-            >
-              Pancake makerlas
-            </p>
-          </div>
-          <div class="flex align-top justify-center">
-            <p class="text-sm line-clamp-3 text-center">
-              Lorem, ipsum dolor sit someothing something something
-              asoidjfoasijd foiasjfopiasjd foijsadofijasoidfjsd
-            </p>
-          </div>
-          <button
-            class="mt-4 h-8 w-24 border border-black bg-green-800 text-fuchsia-50 rounded-full"
-          >
-            Book
-          </button>
-        </div>
-        <div
-          class="flex flex-col items-center m-2 w-72 h-96 p-3 border border-slate-950 overflow-hidden"
-        >
-          <div
-            class="border border-black h-24 w-24 rounded-full mt-4 mb-2 overflow-hidden"
-          >
-            <img
-              src="../../public/KK logo.png"
+              src="./KK logo.png"
               class="w-full h-full object-cover"
               alt=""
             />
@@ -573,145 +382,6 @@
       </div>
     </div>
     <!--FOOTER-->
-    <footer class="relative bg-gray-200 pt-8 pb-6">
-      <div class="container mx-auto px-4">
-        <div class="flex flex-wrap text-left lg:text-left">
-          <div class="w-full lg:w-6/12 px-4">
-            <h4 class="text-3xl font-semibold text-gray-700">
-              Let's keep in touch!
-            </h4>
-            <h5 class="text-lg mt-0 mb-2 text-gray-600">
-              Find us on any of these platforms, we respond in 1-2 business
-              days.
-            </h5>
-            <div class="mt-6 lg:mb-0 mb-6">
-              <button
-                class="bg-white text-blue-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
-                type="button"
-              >
-                <img src="../../public/instagram.png" alt="" />
-              </button>
-              <button
-                class="bg-white text-blue-600 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
-                type="button"
-              >
-                <img src="../../public/facebook.png" />
-              </button>
-              <button
-                class="bg-white text-pink-400 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
-                type="button"
-              >
-                <img src="../../public/twitter.png" alt="" />
-              </button>
-              <button
-                class="bg-white text-gray-800 shadow-lg font-normal h-10 w-10 items-center justify-center align-center rounded-full outline-none focus:outline-none mr-2"
-                type="button"
-              >
-                <img src="../../public/linkedin.png" alt="" />
-              </button>
-            </div>
-          </div>
-          <div class="w-full lg:w-6/12 px-4">
-            <div class="flex flex-wrap items-top mb-6">
-              <div class="w-full lg:w-4/12 px-4 ml-auto">
-                <span
-                  class="block uppercase text-gray-500 text-sm font-semibold mb-2"
-                >
-                  Useful Links
-                </span>
-                <ul class="list-unstyled">
-                  <li>
-                    <a
-                      class="text-gray-600 hover:text-gray-800 font-semibold block pb-2 text-sm"
-                      href=""
-                    >
-                      About Us
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      class="text-gray-600 hover:text-gray-800 font-semibold block pb-2 text-sm"
-                      href=""
-                    >
-                      Blog
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      class="text-gray-600 hover:text-gray-800 font-semibold block pb-2 text-sm"
-                      href=""
-                    >
-                      Github
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      class="text-gray-600 hover:text-gray-800 font-semibold block pb-2 text-sm"
-                      href=""
-                    >
-                      Free Products
-                    </a>
-                  </li>
-                </ul>
-              </div>
-              <div class="w-full lg:w-4/12 px-4">
-                <span
-                  class="block uppercase text-gray-500 text-sm font-semibold mb-2"
-                >
-                  Other Resources
-                </span>
-                <ul class="list-unstyled">
-                  <li>
-                    <a
-                      class="text-gray-600 hover:text-gray-800 font-semibold block pb-2 text-sm"
-                      href=""
-                    >
-                      MIT License
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      class="text-gray-600 hover:text-gray-800 font-semibold block pb-2 text-sm"
-                      href=""
-                    >
-                      Terms &amp; Conditions
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      class="text-gray-600 hover:text-gray-800 font-semibold block pb-2 text-sm"
-                      href=""
-                    >
-                      Privacy Policy
-                    </a>
-                  </li>
-                  <li>
-                    <a
-                      class="text-gray-600 hover:text-gray-800 font-semibold block pb-2 text-sm"
-                      href=""
-                    >
-                      Contact Us
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        <hr class="my-6 border-gray-300" />
-        <div
-          class="flex flex-wrap items-center md:justify-between justify-center"
-        >
-          <div class="w-full md:w-4/12 px-4 mx-auto text-center">
-            <div class="text-sm text-gray-500 font-semibold py-1">
-              Copyright © 2021 Notus JS by
-              <a href="" class="text-gray-500 hover:text-gray-800">
-                Bikesh Maharjan </a
-              >.
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
+    <%- include('../partials/footer.ejs') %>
   </body>
 </html>

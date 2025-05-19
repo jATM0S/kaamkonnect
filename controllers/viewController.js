@@ -23,3 +23,9 @@ exports.settingPassword = (req, res) => {
 exports.settingDelete= (req, res) => {
   res.status(200).render("pages/settingDelete.ejs");
 };
+exports.workers= (req, res) => {
+  res.status(200).render("pages/workers.ejs");
+};
+exports.works= (req, res) => {
+  res.status(200).render("pages/works.ejs");
+};

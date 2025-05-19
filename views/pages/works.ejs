@@ -1,0 +1,335 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./output.css" />
+    <script src="./dropDown.js"></script>
+    <script src="./dropDown.js"></script>
+
+    <title>Document</title>
+  </head>
+  <body>
+    <nav class="border border-black">
+      <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
+        <div class="flex h-16 items-center justify-between">
+          <div class="flex items-center md:hidden">
+            <!-- Mobile menu button-->
+            <button
+              type="button"
+              class="rounded-md p-2 text-gray-800 hover:bg-gray-700 hover:text-white"
+              onclick="toggleNavMenu()"
+              aria-controls="mobile-menu"
+              aria-expanded="false"
+            >
+              <!--
+                Icon when menu is closed.
+    
+                Menu open: "hidden", Menu closed: "block"
+              -->
+              <svg
+                class="block h-6 w-6"
+                id="menu-close-icon"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5"
+                />
+              </svg>
+              <!--
+                Icon when menu is open.
+    
+                Menu open: "block", Menu closed: "hidden"
+              -->
+              <svg
+                class="hidden h-6 w-6"
+                id="menu-open-icon"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="1.5"
+                stroke="currentColor"
+                aria-hidden="true"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M6 18L18 6M6 6l12 12"
+                />
+              </svg>
+            </button>
+          </div>
+          <!-- navigation and company logo -->
+          <div
+            class="flex items-center justify-center md:items-stretch md:justify-start"
+          >
+            <div class="flex flex-shrink-0 items-center">
+              <img class="h-8 w-auto" src="./KK.png" alt="Kaam Konnect" />
+            </div>
+            <div class="hidden md:block md:ml-6">
+              <div class="flex space-x-4">
+                <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+                <a
+                  href="#"
+                  class="rounded-md px-3 py-2 text-sm font-medium text-gray-800 hover:bg-gray-700 hover:text-white"
+                  aria-current="page"
+                  >Home</a
+                >
+                <a
+                  href="#"
+                  class="rounded-md px-3 py-2 text-sm font-medium text-gray-800 hover:bg-gray-700 hover:text-white"
+                  >About</a
+                >
+                <a
+                  href="#"
+                  class="rounded-md px-3 py-2 text-sm font-medium text-gray-800 hover:bg-gray-700 hover:text-white"
+                  >Work</a
+                >
+                <a
+                  href="#"
+                  class="rounded-md px-3 py-2 text-sm font-medium text-gray-800 hover:bg-gray-700 hover:text-white"
+                  >Worker</a
+                >
+              </div>
+            </div>
+          </div>
+          <!-- search bar -->
+          <div
+            class="ml-2 w-10 hidden sm:block sm:min-w-[230px] lg:min-w-[300px] border border-black"
+          >
+            <input
+              type="text"
+              placeholder="🔍 Search something..."
+              class="w-full p-2 border border-gray-300 rounded-lg shadow-sm placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-gray-600 focus:border-gray-600 transition-all"
+            />
+          </div>
+          <!-- searchbutton -->
+
+          <!-- Profile and search dropdown -->
+          <div class="ml-3 flex flex-row items-center">
+            <div
+              class="block sm:hidden mr-9 h-11 w-11 overflow-hidden rounded-xl - hover:border hover:border-black"
+            >
+              <button class="h-11 w-11" onclick="toggleSearchDropdown()">
+                🔍
+              </button>
+            </div>
+            <div>
+              <button
+                type="button"
+                onclick="toggleProfiledropdown()"
+                class="relative flex rounded-full bg-gray-800 text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-gray-800"
+                id="user-menu-button"
+                aria-expanded="false"
+                aria-haspopup="true"
+              >
+                <img
+                  class="h-8 w-8 rounded-full"
+                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                  alt=""
+                />
+              </button>
+            </div>
+
+            <!--
+                Dropdown menu, show/hide based on menu state.
+    
+                Entering: "transition ease-out duration-100"
+                  From: "transform opacity-0 scale-95"
+                  To: "transform opacity-100 scale-100"
+                Leaving: "transition ease-in duration-75"
+                  From: "transform opacity-100 scale-100"
+                  To: "transform opacity-0 scale-95"
+              -->
+            <div
+              class="hidden absolute right-0 z-10 mt-40 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none"
+              id="profileDropdown"
+              role="menu"
+              aria-orientation="vertical"
+              aria-labelledby="user-menu-button"
+              tabindex="-1"
+            >
+              <!-- Active: "bg-gray-100", Not Active: "" -->
+              <a
+                href="#"
+                class="block px-4 py-2 text-sm text-gray-700"
+                role="menuitem"
+                tabindex="-1"
+                id="user-menu-item-0"
+                >Your Profile</a
+              >
+              <a
+                href="#"
+                class="block px-4 py-2 text-sm text-gray-700"
+                role="menuitem"
+                tabindex="-1"
+                id="user-menu-item-1"
+                >Settings</a
+              >
+              <a
+                href="#"
+                class="block px-4 py-2 text-sm text-gray-700"
+                role="menuitem"
+                tabindex="-1"
+                id="user-menu-item-2"
+                >Sign out</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="hidden" id="dropdownSearch">
+        <div class="space-y-1 px-2 pb-3 pt-2">
+          <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+          <input
+            class="block rounded-md px-3 py-2 w-full text-base border border-black"
+            aria-current="page"
+            placeholder="Search Something..."
+          />
+        </div>
+      </div>
+      <!-- Mobile menu, show/hide based on menu state. -->
+      <div class="hidden" id="dropdownNav">
+        <div class="space-y-1 px-2 pb-3 pt-2">
+          <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+          <a
+            href="#"
+            class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
+            aria-current="page"
+            >Home</a
+          >
+          <a
+            href="#"
+            class="block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-700 hover:text-white"
+            >About</a
+          >
+          <a
+            href="#"
+            class="block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-700 hover:text-white"
+            >Work</a
+          >
+          <a
+            href="#"
+            class="block rounded-md px-3 py-2 text-base font-medium text-gray-500 hover:bg-gray-700 hover:text-white"
+            >Worker</a
+          >
+        </div>
+      </div>
+    </nav>
+    <div class="flex flex-col md:flex-row md:justify-between">
+      <!--Sidebar-->
+      <%- include('../partials/filter.ejs') %>
+
+      <!-- mainconent -->
+      <div
+        class="bg-[url('./subtlebg.png')] w-full flex flex-row flex-wrap p-6 justify-evenly"
+      >
+        <div
+          class="flex flex-col items-center m-2 w-96 h-96 p-3 border border-slate-950 overflow-hidden"
+        >
+          <div class="border border-black w-96 h-40 mb-2 overflow-hidden">
+            <img
+              src="./KK logo.png"
+              class="w-full h-full object-cover"
+              alt=""
+            />
+          </div>
+          <div
+            class="overflow-hidden h-9 w-40 flex justify-center align-middle"
+          >
+            <p
+              class="text-xl text-ellipsis font-semibold whitespace-nowrap overflow-hidden"
+            >
+              Plumbing
+            </p>
+          </div>
+          <div class="flex align-top justify-center">
+            <p class="text-lg overflow-hidden text-ellipsis whitespace-nowrap">
+              Plumber
+            </p>
+          </div>
+          <div class="flex align-top justify-center">
+            <p class="text-lg overflow-hidden text-ellipsis whitespace-nowrap">
+              Skill: advanced
+            </p>
+          </div>
+          <div class="flex align-top justify-center">
+            <p
+              class="text-lg font-semibold overflow-hidden text-ellipsis whitespace-nowrap"
+            >
+              Description
+            </p>
+          </div>
+          <div class="flex align-top justify-center">
+            <p class="text-sm line-clamp-4 text-center">
+              Lorem, ipsum dolor sit someothing something something
+              asoidjfoasijd foiasjfopiasjd foijsadofijasoidfjsd something
+              something something something something
+            </p>
+          </div>
+          <button
+            class="mt-4 h-8 w-24 border border-black bg-green-800 text-fuchsia-50 rounded-full"
+          >
+            Apply
+          </button>
+        </div>
+        <div
+          class="flex flex-col items-center m-2 w-96 h-96 p-3 border border-slate-950 overflow-hidden"
+        >
+          <div class="border border-black w-96 h-40 mb-2 overflow-hidden">
+            <img
+              src="./KK logo.png"
+              class="w-full h-full object-cover"
+              alt=""
+            />
+          </div>
+          <div
+            class="overflow-hidden h-9 w-40 flex justify-center align-middle"
+          >
+            <p
+              class="text-xl text-ellipsis font-semibold whitespace-nowrap overflow-hidden"
+            >
+              Plumbing
+            </p>
+          </div>
+          <div class="flex align-top justify-center">
+            <p class="text-lg overflow-hidden text-ellipsis whitespace-nowrap">
+              Plumber
+            </p>
+          </div>
+          <div class="flex align-top justify-center">
+            <p class="text-lg overflow-hidden text-ellipsis whitespace-nowrap">
+              Skill: advanced
+            </p>
+          </div>
+          <div class="flex align-top justify-center">
+            <p
+              class="text-lg font-semibold overflow-hidden text-ellipsis whitespace-nowrap"
+            >
+              Description
+            </p>
+          </div>
+          <div class="flex align-top justify-center">
+            <p class="text-sm line-clamp-4 text-center">
+              Lorem, ipsum dolor sit someothing something something
+              asoidjfoasijd foiasjfopiasjd foijsadofijasoidfjsd something
+              something something something something
+            </p>
+          </div>
+          <button
+            class="mt-4 h-8 w-24 border border-black bg-green-800 text-fuchsia-50 rounded-full"
+          >
+            Apply
+          </button>
+        </div>
+      </div>
+    </div>
+    <!--FOOTER-->
+    <%- include('../partials/footer.ejs') %>
+  </body>
+</html>
